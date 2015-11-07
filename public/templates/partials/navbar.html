@@ -11,12 +11,17 @@
       <a class="navbar-brand" href="/#/">
         GoSnipIt <i class="fa fa-puzzle-piece"></i>
       </a>
+      Authorized {{logged.authorized}}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        
-      <button type="button" class="btn btn-default navbar-btn navbar-right" ui-sref="auth">Sign in</button>
+      <a ui-sref="company.dashboard({'company_id': logged.user.company_id})">Dashboard</a>
+      <a ui-sref="company.project({'project_id': 8, 'company_id': logged.user.company_id})">Project</a>
+
+      <button ng-hide="logged.authorized" type="button" class="btn btn-default 
+      navbar-btn navbar-right" ui-sref="auth">Sign in</button>
+      <button ng-show="logged.authorized" type="button" class="btn btn-default navbar-btn navbar-right" ng-click="Logout()">Sign out</button>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

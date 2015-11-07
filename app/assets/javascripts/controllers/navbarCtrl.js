@@ -1,5 +1,15 @@
-app.controller('navbarCtrl', ['$scope', function($scope){
-  $scope.test = "NavBar";
+app.controller('navbarCtrl', ['$scope', '$location','Auth', 'storage',  function($scope, $location, Auth, storage){
+  
+  $scope.logged = storage.auth;
+  
+  console.log("In ctrl user ", $scope.logged.user);
   
 
+  $scope.Logout = storage.logout;
+
+  $scope.$on('devise:logout', function(event, oldCurrentUser) {
+      // 
+      console.log("Logged out devise");
+      $location.path('/');
+  });
 }]);
