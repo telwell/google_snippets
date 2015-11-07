@@ -1,0 +1,39 @@
+//Nav
+
+#main-nav {
+  background: $primary;
+  border: none;
+  border-radius: 0;
+
+  a,
+  button,
+   {
+    color: $secondary;
+  }
+
+  a.btn,
+  button {
+    background: $primary;
+  }
+
+  a.btn:hover,
+  a.btn:active,
+  button:hover,
+  button:active {
+    background: $secondary;
+    color: $primary;
+  }
+
+  a.btn:active,
+  button:active {
+    border-color: darken($primary, 10%);
+  }
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: $secondary;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar {
+  background-color: $primary;
+}

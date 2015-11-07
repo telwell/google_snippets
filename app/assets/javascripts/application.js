@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require angular.min.js
 //= require angular-ui-router.min.js
+//= require bootstrap.min.js
 //= require ui-bootstrap-tpls-0.14.3.min.js
 //= require restangular.js
 //= require underscore.js
