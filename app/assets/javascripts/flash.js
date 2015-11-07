@@ -1,14 +1,20 @@
 // Flash Messages
 
-//Example:
+// //Example:
 // $(document).ready(function() {
 
 //   $('#foo').flash({
 //     message: 'This is an informative and dismissable flash message!', //defaults to ''
 //     type: 'warning', //defaults to 'info'
 //     method: 'append', //defaults to 'prepend'
-//     dismissable: true //defaults to 'true'
+//     dismissable: true, //defaults to 'true'
+//     id: 'my-awesome-id', //defaults to 'flash-message-info'
+//     className: 'css-classes-here like-normal' //defaults to ''
 //   });
+
+//   $.flash.clear(); //removes all dismissable flash messages
+//   //$.flash.remove(); //alias for $.flash.clear();
+//   //$('#my-awesome-id').remove(); //Use regular jQuery remove to target specific elements
 
 // });
 
@@ -35,7 +41,9 @@
       message: '',
       type: 'info',
       dismissable: true,
-      method: 'prepend'
+      method: 'prepend',
+      id: 'flash-message-info',
+      className: ''
     }, options);
 
     //Output dismissable class and button only if desired
@@ -48,10 +56,15 @@
       '</button>';
     }
 
+    //Check if we should append any classes
+    //to the container div
+    settings.className = (settings.className != '') ? ' ' + settings.className : '';
+
     //Create Bootstrap markup
-    var flashMessage = '<div class="alert alert-' +
+    var flashMessage = '<div id="' + settings.id + '" class="alert alert-' +
         settings.type +
         dismissable +
+        settings.className +
         '" role="alert">' +
         settings.message +
         dismissableButton +
@@ -72,14 +85,15 @@
 
   //Clears all dismissable alerts
   $.flash = {
-    clear: function(){
+    clear: function() {
+      $('.alert.alert-dismissible').remove();
+    },
+    remove: function() {
       $('.alert.alert-dismissible').remove();
     }
   };
 
 })(jQuery);
-
-
 
 
 
