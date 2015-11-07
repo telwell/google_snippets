@@ -1,7 +1,7 @@
 //Nav
 
 #main-nav {
-  background: $primary;
+  background: $quinary;
   border: none;
   border-radius: 0;
 
@@ -13,7 +13,7 @@
 
   a.btn,
   button {
-    background: $primary;
+    background: $quinary;
   }
 
   a.btn:hover,
@@ -21,12 +21,12 @@
   button:hover,
   button:active {
     background: $secondary;
-    color: $primary;
+    color: $quinary;
   }
 
   a.btn:active,
   button:active {
-    border-color: darken($primary, 10%);
+    border-color: $quinary;
   }
 }
 
@@ -35,5 +35,5 @@
 }
 
 .navbar-default .navbar-toggle:hover .icon-bar {
-  background-color: $primary;
+  background-color: $quinary;
 }
