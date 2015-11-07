@@ -35,6 +35,32 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
             controller: 'navbarCtrl'
           }
         }
+      })
+      .state('project',{
+        url: '/project/:id',
+        views: {
+          '':{
+            templateUrl: 'templates/project.html',
+            controller: 'projectCtrl'
+          },
+          'navbar' : {
+            templateUrl: 'templates/partials/navbar.html',
+            controller: 'navbarCtrl'
+          }
+        }
+      })
+      .state('user',{
+        url: '/user/:id',
+        views: {
+          '':{
+            templateUrl: 'templates/user.html',
+            controller: 'userCtrl'
+          },
+          'navbar' : {
+            templateUrl: 'templates/partials/navbar.html',
+            controller: 'navbarCtrl'
+          }
+        }
       });
 
       $urlRouterProvider.otherwise('/');
