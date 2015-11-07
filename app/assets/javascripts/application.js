@@ -19,5 +19,5 @@
 //= require restangular.js
 //= require underscore.js
 //= require devise-min.js
-
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .

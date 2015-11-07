@@ -17,4 +17,5 @@
  *= require snippets
  *= require users
  *= require_self
+ *= require_tree ../../../vendor/assets/stylesheets/.
  */
