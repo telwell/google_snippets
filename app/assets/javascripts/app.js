@@ -36,6 +36,7 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
           }
         }
       })
+<<<<<<< HEAD
       .state('project',{
         url: '/project/:id',
         views: {
@@ -55,6 +56,14 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
           '':{
             templateUrl: 'templates/user.html',
             controller: 'userCtrl'
+=======
+      .state('auth',{
+        url: '/auth',
+        views: {
+          '':{
+            templateUrl: 'templates/auth.html',
+            controller: 'authCtrl'
+>>>>>>> frontend
           },
           'navbar' : {
             templateUrl: 'templates/partials/navbar.html',
