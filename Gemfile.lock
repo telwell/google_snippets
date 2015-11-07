@@ -55,6 +55,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     awesome_print (1.6.1)
+    bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -73,6 +74,13 @@ GEM
     coolline (0.5.0)
       unicode_utils (~> 1.4)
     debug_inspector (0.0.2)
+    devise (3.5.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     diffy (3.0.7)
     erubis (2.7.0)
@@ -105,6 +113,8 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
+    pg (0.18.3)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -153,6 +163,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -181,6 +193,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode_utils (1.4.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -194,10 +208,12 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   coffee-rails (~> 4.1.0)
+  devise
   faker
   jazz_hands!
   jbuilder (~> 2.0)
   jquery-rails
+  pg
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

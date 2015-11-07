@@ -8,15 +8,17 @@ end
 
 # Users
 User.destroy_all
-10.times do
+10.times do |i|
 	companies = Company.all.pluck(:id)
 	u = User.new
 	u.company_id = companies.sample
 	u.first_name = Faker::Name.first_name
 	u.last_name = Faker::Name.last_name
-	u.email = Faker::Internet.email
+	u.email = "email#{i}@test.com"
 	u.phone = Faker::PhoneNumber.phone_number
 	u.location = "#{Faker::Address.city}, #{Faker::Address.state_abbr}"
+	u.password = 'password'
+	u.password_confirmation = 'password'
 	u.save!	
 end
 

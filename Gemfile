@@ -25,9 +25,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Add Devise for user authentication
+gem 'devise'
+
 group :production do
 	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
+	gem 'pg'
 end
 
 group :development, :test do
