@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users do
   	resource :dashboard
+  	resources :photos, :only => [:new, :create]
   end
 
   get 'projects/:id/project_page' => 'projects#project_page'
