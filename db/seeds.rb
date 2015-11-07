@@ -56,6 +56,17 @@ ProjectsUser.destroy_all
 	pu.save!
 end
 
+#Subscriptions
+puts 'Creating Subscriptions'
+Subscription.destroy_all
+10.times do
+	project_ids = Project.all.pluck(:id)
+	s = Subscription.new
+	s.user_id = user_ids.sample
+	s.project_id = project_ids.sample
+	s.save!	
+end
+
 #Snippets
 puts 'Creating Snippets'
 Snippet.destroy_all
