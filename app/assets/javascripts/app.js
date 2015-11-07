@@ -6,6 +6,11 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
     "content-type":"application/json"
   });
 }])
+// .config([
+//   "$httpProvider", function($httpProvider) {
+//     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+//   }
+// ])
 .config(function(AuthProvider) {
         // Configure Auth service with AuthProvider
     })
@@ -23,15 +28,19 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
             templateUrl: 'templates/partials/navbar.html',
             controller: 'navbarCtrl'
           }
+        },
+        resolve: {
+          'check': function(storage){
+            storage.checkAuth();
+          }
         }
-
       })
-      .state('dashboard',{
-        url: '/dashboard',
+      .state('company',{
+        url: '/company/:company_id',
         views: {
           '':{
-            templateUrl: 'templates/dashboard.html',
-            controller: 'dashboardCtrl'
+            templateUrl: 'templates/company.html'
+            
           },
           'navbar' : {
             templateUrl: 'templates/partials/navbar.html',
@@ -39,16 +48,33 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
           }
         }
       })
-      .state('project',{
-        url: '/project/:id',
+      .state('company.dashboard',{
+        url: '/dashboard',
+        views: {
+          '':{
+            templateUrl: 'templates/dashboard.html',
+            controller: 'dashboardCtrl'
+          }
+        },
+        resolve: {
+          'check': function( $stateParams, $location, storage){
+            storage.checkAuth($stateParams.company_id);
+
+          }
+        }
+      })
+      .state('company.project',{
+        url: '/project/:project_id',
         views: {
           '':{
             templateUrl: 'templates/project.html',
             controller: 'projectCtrl'
-          },
-          'navbar' : {
-            templateUrl: 'templates/partials/navbar.html',
-            controller: 'navbarCtrl'
+          }
+        },
+        resolve: {
+          'check': function( $stateParams, $location, storage){
+            storage.checkAuth($stateParams.company_id);
+
           }
         }
       })
@@ -58,24 +84,28 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
           '':{
             templateUrl: 'templates/user.html',
             controller: 'userCtrl'
-          },
-          'navbar' : {
-            templateUrl: 'templates/partials/navbar.html',
-            controller: 'navbarCtrl'
+          }
+        },
+        resolve: {
+          'check': function( $stateParams, $location, storage){
+            storage.checkAuth($stateParams.company_id);
+
           }
         }
       })
 
       .state('snippet',{
-        url: '/snippet/:id',
+        url: '/snippet/:snippet_id',
         views: {
           '':{
             templateUrl: 'templates/snippet.html',
             controller: 'snippetCtrl'
-          },
-          'navbar' : {
-            templateUrl: 'templates/partials/navbar.html',
-            controller: 'navbarCtrl'
+          }
+        },
+        resolve: {
+          'check': function( $stateParams, $location, storage){
+            storage.checkAuth($stateParams.company_id);
+
           }
         }
       })
