@@ -1,4 +1,4 @@
-app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
+app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise'])
 .config(['RestangularProvider', function(RestangularProvider){
   // RestangularProvider.setBaseUrl('api/v1');
   RestangularProvider.setRequestSuffix('.json');
@@ -6,6 +6,9 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
     "content-type":"application/json"
   });
 }])
+.config(function(AuthProvider) {
+        // Configure Auth service with AuthProvider
+    })
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     $stateProvider

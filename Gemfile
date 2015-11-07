@@ -27,6 +27,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Add Devise for user authentication
 gem 'devise'
 
+#Angular
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
+gem 'angular_rails_csrf'
+
 group :production do
 	gem 'pg'
 end
