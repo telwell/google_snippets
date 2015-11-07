@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151107024014) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "companies", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "admin_id"
@@ -32,8 +29,8 @@ ActiveRecord::Schema.define(version: 20151107024014) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "projects", ["company_id"], name: "index_projects_on_company_id", using: :btree
-  add_index "projects", ["parent_id"], name: "index_projects_on_parent_id", using: :btree
+  add_index "projects", ["company_id"], name: "index_projects_on_company_id"
+  add_index "projects", ["parent_id"], name: "index_projects_on_parent_id"
 
   create_table "projects_users", force: :cascade do |t|
     t.integer  "project_id", null: false
@@ -42,8 +39,8 @@ ActiveRecord::Schema.define(version: 20151107024014) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
-  add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
+  add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id"
+  add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id"
 
   create_table "snippets", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -53,13 +50,8 @@ ActiveRecord::Schema.define(version: 20151107024014) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-  add_index "snippets", ["project_id"], name: "index_snippets_on_project_id", using: :btree
-  add_index "snippets", ["user_id"], name: "index_snippets_on_user_id", using: :btree
-=======
   add_index "snippets", ["project_id"], name: "index_snippets_on_project_id"
   add_index "snippets", ["user_id"], name: "index_snippets_on_user_id"
->>>>>>> 4e7cf4f9561dc897a3b52cf503f6b1c7ea9237ef
 
   create_table "users", force: :cascade do |t|
     t.integer  "company_id"

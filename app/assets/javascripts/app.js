@@ -1,4 +1,4 @@
-app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
+app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise'])
 .config(['RestangularProvider', function(RestangularProvider){
   // RestangularProvider.setBaseUrl('api/v1');
   RestangularProvider.setRequestSuffix('.json');
@@ -6,6 +6,9 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
     "content-type":"application/json"
   });
 }])
+.config(function(AuthProvider) {
+        // Configure Auth service with AuthProvider
+    })
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     $stateProvider
@@ -36,12 +39,40 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap'])
           }
         }
       })
+      .state('project',{
+        url: '/project/:id',
+        views: {
+          '':{
+            templateUrl: 'templates/project.html',
+            controller: 'projectCtrl'
+          },
+          'navbar' : {
+            templateUrl: 'templates/partials/navbar.html',
+            controller: 'navbarCtrl'
+          }
+        }
+      })
+      .state('user',{
+        url: '/user/:id',
+        views: {
+          '':{
+            templateUrl: 'templates/user.html',
+            controller: 'userCtrl'
+          },
+          'navbar' : {
+            templateUrl: 'templates/partials/navbar.html',
+            controller: 'navbarCtrl'
+          }
+        }
+      })
+
       .state('auth',{
         url: '/auth',
         views: {
           '':{
             templateUrl: 'templates/auth.html',
             controller: 'authCtrl'
+
           },
           'navbar' : {
             templateUrl: 'templates/partials/navbar.html',
