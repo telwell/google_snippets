@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   	resource :dashboard
   end
 
-  resources :projects
+  get 'projects/:id/project_page' => 'projects#project_page'
 
   # get 'index' => 'application#index'
   root 'application#index'

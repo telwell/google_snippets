@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 		subscribers = project.subscriptions
 
 		respond_to do |format|
-			format.json { render json: { project: project, members: members, subscriptions: subscriptions } }
+			format.json { render json: { project: project, members: members, subscribers: subscribers } }
 		end
 	end
 end
