@@ -34,10 +34,12 @@ gem "paperclip", "~> 4.3"
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
 end
-gem 'angular_rails_csrf'
+
+gem 'angular_rails_csrf', '= 1.0.3'
 
 group :production do
 	gem 'pg'
+	gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -53,5 +55,7 @@ group :development do
   gem 'better_errors'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'faker'
+  # Get some email testing up
+  gem "letter_opener"
 end
 
