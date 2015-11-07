@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Weekly Digest for <%= @project.name %>!</h1>
+    <p>
+      Here's what your team was up to last week, and what they're trying to accomplish next week!<br/>
+    </p>
+    <% @snippets.each do |snippet| %>
+			<h3>Author: <%= snippet.user.name %></h3>
+			<p>Created at: <%= snippet.created_at.strftime("%m/%d/%Y") %></p>
+			<p><%= snippet.text %></p>
+			<br>
+		<% end %>
+		<p>Thanks for using Go Snip It! Great job last week and keep it up :)</p>
+		<br>
+		<p><b>The Go Snip It Team</b></p>
+  </body>
+</html>

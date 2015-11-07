@@ -53,5 +53,7 @@ group :development do
   gem 'better_errors'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'faker'
+  # Get some email testing up
+  gem "letter_opener"
 end
 

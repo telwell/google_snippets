@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 	has_many :snippets
 	has_many :subscriptions
 	belongs_to :company
+
+	def name
+		return "#{self.first_name} #{self.last_name}"
+	end
 end
