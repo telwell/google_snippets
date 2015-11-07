@@ -66,6 +66,20 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
         }
       })
 
+      .state('snippet',{
+        url: '/snippet/:id',
+        views: {
+          '':{
+            templateUrl: 'templates/snippet.html',
+            controller: 'snippetCtrl'
+          },
+          'navbar' : {
+            templateUrl: 'templates/partials/navbar.html',
+            controller: 'navbarCtrl'
+          }
+        }
+      })
+
       .state('auth',{
         url: '/auth',
         views: {

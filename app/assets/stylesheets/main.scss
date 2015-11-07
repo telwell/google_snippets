@@ -1,0 +1,19 @@
+//Main
+
+@import 'styles/config/colors';
+@import 'styles/config/utils';
+@import 'styles/components/nav';
+
+#dashboard {
+  .projects-list {
+    line-height: 30px;
+  }
+}
+
+#auth {
+  max-width: 256px;
+  margin: 128px auto 0 auto;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 16px;
+}

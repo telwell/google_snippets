@@ -1,4 +1,5 @@
 # Companies
+puts 'Creating Companies'
 Company.destroy_all
 10.times do
 	c = Company.new
@@ -7,6 +8,7 @@ Company.destroy_all
 end
 
 # Users
+puts 'Creating Users'
 User.destroy_all
 10.times do |i|
 	companies = Company.all.pluck(:id)
@@ -23,6 +25,7 @@ User.destroy_all
 end
 
 # Add admin_id to companies
+puts 'Creating Add admin_id to companies'
 companies = Company.all
 user_ids = User.all.pluck(:id)
 companies.each do |company|
@@ -30,6 +33,7 @@ companies.each do |company|
 end
 
 #Projects
+puts 'Creating Projects'
 Project.destroy_all
 10.times do
 	company_ids = Company.all.pluck(:id)
@@ -42,6 +46,7 @@ Project.destroy_all
 end
 
 #ProjectsUser
+puts 'Creating ProjectsUser'
 ProjectsUser.destroy_all
 10.times do
 	project_ids = Project.all.pluck(:id)
@@ -52,6 +57,7 @@ ProjectsUser.destroy_all
 end
 
 #Snippets
+puts 'Creating Snippets'
 Snippet.destroy_all
 20.times do
 	project_ids = Project.all.pluck(:id)
@@ -61,4 +67,7 @@ Snippet.destroy_all
 	s.text = Faker::Lorem.sentence(3)
 	s.save!
 end
-	
+
+
+
+
