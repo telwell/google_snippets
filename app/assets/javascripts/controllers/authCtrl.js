@@ -36,7 +36,7 @@ app.controller('authCtrl', ['$scope', 'Restangular', 'Auth', function($scope, Re
           $scope.logged = Auth.isAuthenticated();
         }, function(error) {
             // Authentication failed...
-            console.log("failed");
+            console.log("failed" , error);
         });
       };
 
