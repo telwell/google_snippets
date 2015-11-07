@@ -54,8 +54,10 @@ ActiveRecord::Schema.define(version: 20151107024014) do
   end
 
 
+
   add_index "snippets", ["project_id"], name: "index_snippets_on_project_id"
   add_index "snippets", ["user_id"], name: "index_snippets_on_user_id"
+
 
 
   create_table "users", force: :cascade do |t|
