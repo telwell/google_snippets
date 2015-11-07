@@ -27,6 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Add Devise for user authentication
 gem 'devise'
 
+# Add Paperclip for image attachment
+gem "paperclip", "~> 4.3"
+
 #Angular
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
