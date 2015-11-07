@@ -11,10 +11,17 @@
  * file per style scope.
  *
  *= require bootstrap.min.css
- *= require main
- *= require companies
- *= require projects
- *= require snippets
- *= require users
  *= require_self
  */
+
+ @import 'main';
+
+ @import 'auth';
+ @import 'companies';
+ @import 'dashboard';
+ @import 'home';
+ @import 'photos';
+ @import 'projects';
+ @import 'snippets';
+ @import 'subscriptions';
+ @import 'users';
