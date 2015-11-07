@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   # get 'index' => 'application#index'
   root 'application#index'
+  
 end
