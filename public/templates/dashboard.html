@@ -70,15 +70,23 @@
 
         <li class="list-group-item clearfix"  ng-repeat="project in data.dashboard.projects">
           <div class="pull-left">
-            Why no project name here? 
+
+          <h4>@{{project.project.name }}</h4>
+          
+
+          <h5> {{project.project.description}}</h5>
           </div>
 
-          {{project.name}}
-
-          <a href="#" class="btn btn-success pull-right">
+          <a href="#" class="btn btn-success pull-right" ng-hide="project.subscribed">
             <i class="fa fa-check"></i>
-            Subscribed?
+            <span >Subscribed</span>
           </a>
+          
+          <a href="#"  class="btn btn-default pull-right" ng-show="project.subscribed">
+            <i class="fa fa-check"></i>
+            <span >Subscribe</span>
+          </a>
+            
         </li>
         
       </ul>

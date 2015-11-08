@@ -56,7 +56,8 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
         resolve: {
           'check': function( $stateParams, $location, storage){
             storage.checkAuth($stateParams.company_id);
-
+            console.log("Resolve user", storage.auth.user );
+            storage.getDashboard($stateParams.company_id);
           }
         }
       })
