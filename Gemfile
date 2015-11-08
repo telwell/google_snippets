@@ -34,6 +34,9 @@ gem 'paperclip', '~> 4.3'
 # Faker to help seed our DB
 gem 'faker'
 
+# Add Hirb to help with DB on heroku
+gem 'hirb'
+
 #Angular
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular-devise'
