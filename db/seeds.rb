@@ -43,7 +43,17 @@ puts 'Running seeds...'
 # multiply the count of seeded rows
 # for ALL records
 # 
-MULTIPLIER = 1
+MULTIPLIER = 10
+
+# --------------------------------------------
+# Row Multiplier
+# --------------------------------------------
+# 
+# random index getter helper
+# 
+def randomize(index, array)
+  array[(rand(100) * index) % array.length]
+end
 
 # Companies
 puts 'Creating Companies'
@@ -61,9 +71,9 @@ Company.create!(companies)
 puts 'Creating Users'
 User.destroy_all
 users = []
-companie_ids = Company.all.pluck(:id)
+company_ids = Company.all.pluck(:id)
 (MULTIPLIER * 25).times do |i|
-  u = User.new
+  # u = User.new
   # u.company_id = companies.sample
   # u.first_name = Faker::Name.first_name
   # u.last_name = Faker::Name.last_name
@@ -75,7 +85,7 @@ companie_ids = Company.all.pluck(:id)
   # u.save!
 
   users << {
-    :company_id => companie_ids.sample,
+    :company_id => randomize(i, company_ids),
     :first_name => Faker::Name.first_name,
     :last_name => Faker::Name.last_name,
     :email => "email#{i}@test.com",
@@ -111,7 +121,7 @@ project_ids = Project.all.pluck(:id)
 
   projects << {
     :parent_id => -1,
-    :company_id => company_ids[i % company_ids.length],
+    :company_id => randomize(i, company_ids),
     :name => Faker::Name.title,
     :description => Faker::Lorem.sentence(10)
   }
@@ -132,8 +142,8 @@ projects_users = []
   # pu.role = Faker::Name.title
   # pu.save!
 
-  user = users[i % users.length]
-  project_id = user.project_ids.present? ? user.project_ids[i % user.project_ids.length] : 1 # <<< performs check to see if we have IDs first, NOT NULL constraint was throwing error
+  user = randomize(i, users)
+  project_id = user.project_ids.present? ? randomize(i, user.project_ids) : 1 # <<< performs check to see if we have IDs first, NOT NULL constraint was throwing error
   projects_users << {
     :user_id => user.id,
     :project_id => project_id,
@@ -155,8 +165,8 @@ project_ids = Project.all.pluck(:id)
   # s.save!
 
   subscriptions << {
-    :user_id => user_ids[i % user_ids.length],
-    :project_id => project_ids[i % project_ids.length]
+    :user_id => randomize(i, user_ids),
+    :project_id => randomize(i, project_ids)
   }
 end
 Subscription.create!(subscriptions)
@@ -174,12 +184,12 @@ project_ids = Project.all.pluck(:id)
   # s.text = Faker::Lorem.sentence(20) # <<< increased snippet length
   # s.save!
 
-  day = (i % 52).weeks.ago
+  day = (i * rand(52) % 52).weeks.ago
   monday = day.beginning_of_week.strftime('%A, %B %d')
   sunday = day.end_of_week.strftime('%A, %B %d')
   snippets << {
-    :user_id => user_ids[i % user_ids.length],
-    :project_id => project_ids[i % project_ids.length],
+    :user_id => randomize(i, user_ids),
+    :project_id => randomize(i, project_ids),
     :text => Faker::Lorem.sentence(20), # <<< increased snippet length
     :week => "#{monday} - #{sunday}"
   }
