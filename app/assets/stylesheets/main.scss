@@ -9,6 +9,18 @@
 // Shared Styles
 //----------------------------
 
+html,
+body {
+  background: #fff;
+}
+
+#dashboard,
+#user,
+#auth,
+#project {
+  margin-bottom: 128px;
+}
+
 header.user {
   .avatar-container {
     max-width: 128px;
@@ -18,9 +30,21 @@ header.user {
   .user-details {
     float: left;
   }
+
+  .avatar-container {
+    max-width: 25%;
+  }
+
+  .user-details {
+    max-width: 75%;
+  }
 }
 
 a.btn.btn-primary,
 button.btn.btn-primary {
   background: $quinary;
+}
+
+h1 {
+  color: $quinary;
 }

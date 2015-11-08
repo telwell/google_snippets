@@ -2,8 +2,19 @@
 
 #auth {
   max-width: 512px;
-  margin: 128px auto 0 auto;
+  margin: 128px auto;
   border-radius: 8px;
   border: 1px solid #ccc;
   padding: 16px;
+
+  .site-title {
+    color: $quinary;
+  }
+}
+
+@media only screen and (max-width: 544px) {
+  #auth {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }

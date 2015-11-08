@@ -3,7 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #dashboard {
-  .projects-list {
-    line-height: 30px;
+  .user-details {
+    h3,
+    h4 {
+      color: $quinary;
+    }
+  }
+
+  .snippet-text {
+    margin-left: 64px;
+    padding-left: 16px;
+    border-left: 1px solid $quinary;
   }
 }
