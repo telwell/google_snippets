@@ -208,7 +208,8 @@ users.each do |user|
   index = indexes.shuffle.first
   File.open("#{Rails.root}/public/images/avatars/avatar-#{index}.png") do |f|
     photo = Photo.create!(
-      :photo => f
+      :photo => f,
+      :user_id => user.id
     )
     user.avatar_id = photo.id
   end
