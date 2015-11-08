@@ -52,7 +52,7 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
         obj.auth.user = user;
         obj.auth.authorized = Auth.isAuthenticated();
         if (company_id && company_id != user.company_id){
-          console.log(company_id, user.company_id, company_id && company_id != user.company_id)
+          console.log(company_id, user.company_id, company_id && company_id != user.company_id);
           $location.path('/');
         }
         return user;
@@ -68,6 +68,7 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
     Restangular.all('users').post(user).then(function(response){
       var user = response;
       obj.login(user.email, user.password);
+
     }, function(error){
       console.log("New user creation", error);
     });
@@ -89,6 +90,7 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
       console.log("Logged in user", user); // => {id: 1, ect: '...'}
       obj.auth.user = user;
       obj.auth.authorized = Auth.isAuthenticated();
+      $location.path('/dashboard');
 
     }, function(error) {
         // Authentication failed...
