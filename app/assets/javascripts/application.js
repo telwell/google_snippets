@@ -18,4 +18,5 @@
 //= require restangular.js
 //= require underscore.js
 //= require devise-min.js
+//= require angular-devise
 //= require_tree .
