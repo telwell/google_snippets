@@ -10,10 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require main
- *= require companies
- *= require projects
- *= require snippets
- *= require users
+ *= require bootstrap.min.css
  *= require_self
  */
+
+ @import 'main';
+
+ @import 'auth';
+ @import 'companies';
+ @import 'dashboard';
+ @import 'home';
+ @import 'photos';
+ @import 'projects';
+ @import 'snippets';
+ @import 'subscriptions';
+ @import 'users';
