@@ -21,29 +21,24 @@
                 <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
               </div>
               <div class="user-details">
-                <h1>
-                  {{snippet.id}}
-                </h1>
-                <p>
-                  Projects: for user {{snippet.user_id}}
-                </p>
-
+                <h3>
+                  {{snippet.user_name}} <span ng-show="snippet.role!='no role'">- {{snippet.role}}</span> 
+                </h3>
+                <h4>
+                  @{{snippet.project.name}}
+                </h4>
               </div>
             </header>
 
             
             <div class="project">
-              <h2>
-                User projects: @{{snippet.project_id}}
-              </h2>
               <div class="week">
-                Need a week for snippet
-                <br>
-                October 21, 2015 - October 28, 2015
+                {{snippet.snippet.week}}
+
               </div>
-              <div class="snippets finished">
-                <p ng-bind-html="snippet.text | rawHtml">
-                  
+              <div>
+                <p >
+                  {{snippet.snippet.text}}
                 </p>
               </div> 
             </div><!-- .project -->

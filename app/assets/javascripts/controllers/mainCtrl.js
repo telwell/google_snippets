@@ -1,3 +1,3 @@
-app.controller('mainCtrl', ['$scope', function($scope){
-  $scope.test = "Main";
+app.controller('mainCtrl', ['$scope', 'storage', function($scope, storage){
+  $scope.logged = storage.auth;
 }]);
