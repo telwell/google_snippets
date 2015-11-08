@@ -17,5 +17,17 @@
 /tmp
 /public/assets
 
-#Ignore Mac DS_Store files
+
+# --------
+# IDEs
+# --------
+.idea
+
+
+# --------
+# Mac OS X
+# --------
+*/.DS_Store
 .DS_Store
+.DS_Store?
+
