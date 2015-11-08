@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	has_many :snippets
 	has_many :subscriptions
 	belongs_to :company
+  has_one :avatar, :class_name => 'Photo'
 
 	def name
 		return "#{self.first_name} #{self.last_name}"
