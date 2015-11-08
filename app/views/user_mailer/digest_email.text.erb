@@ -1,0 +1,13 @@
+Weekly Digest for <%= @project.name %>!
+=======================================
+
+Here's what your team was up to last week, and what they're trying to accomplish next week!
+    
+<% @snippets.each do |snippet| %>
+	Author: <%= snippet.user.name %>
+	Created at: <%= snippet.created_at.strftime("%m/%d/%Y") %>
+	<%= snippet.text %>
+<% end %>
+
+Thanks for using Go Snip It! Great job last week and keep it up :)
+The Go Snip It Team

@@ -17,3 +17,29 @@
   border: 1px solid #ccc;
   padding: 16px;
 }
+
+#home {
+  i {
+    color: $quinary;
+  }
+
+  .btn {
+    background: $quinary;
+  }
+
+  .cta-buttons .btn {
+    width: 25%;
+  }
+
+  #main-title {
+    font-size: 48px;
+  }
+
+  #main-header {
+    height: 384px;
+
+    h1 {
+      line-height: 64px;
+    }
+  }
+}

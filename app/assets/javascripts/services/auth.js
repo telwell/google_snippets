@@ -16,6 +16,19 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
       });
   };
 
+  obj.getUser = function(id){
+    
+    Restangular.one('user', id).get().then(function(response){
+      console.log("Data", response);
+      obj.data.user = response;
+
+
+    },
+      function(error){
+        console.log("No user data returned");
+      });
+  };
+
   //Authorization
   obj.auth = {authorized: Auth.isAuthenticated()};
 

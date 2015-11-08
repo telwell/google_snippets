@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   	resources :photos, :only => [:new, :create]
   end
 
- 
+  
   resources :dashboard, only: [:show]
   resources :projects, only: [:show]
 
