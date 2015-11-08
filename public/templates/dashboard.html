@@ -13,7 +13,8 @@
       <div class="col-md-12 snippets-feed">
 
         <ul class="list-group users-snippets-list">
-          <li ng-hide="data.dashboard.snippets.length == 0">You don't have latest snippet from subscribtions yet</li>
+          data {{data.dashboard.snippets.length}}
+          <li ng-hide="data.dashboard.snippets.length == 0">No subscribtions yet</li>
           <li class="list-group-item user-snippets-list-item" ng-repeat="snippet in data.dashboard.snippets">
             
             <div class="user-snippets">

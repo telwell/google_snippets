@@ -15,6 +15,24 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
         console.log("No dashboard data returned");
       });
   };
+
+  obj.newSnippet = function(snippet){
+
+    Auth.currentUser().then(function(user) {
+      console.log("newSnippet", snippet,user);
+      snippet.user_id = user.id;
+      Restangular.all('snippets').post(snippet).then(function(response){
+        console.log("Snippet created", response);
+
+      }, function(error){
+        console.log("New snippet creation", error);
+      });
+    }, function(error) {
+        // unauthenticated error
+    });
+
+  };
+
   obj.newProject = function(project){
     Restangular.all('projects').post(project).then(function(response){
       console.log("Project created", response);

@@ -38,25 +38,33 @@
         </header>
         <br>
         <div class="snippet-form-container">
-          <ul class="projects-list list-inline">
+          <form ng-model="Snippet" ng-submit="postSnippet()">
+         <!--  <ul class="projects-list list-inline">
+            
             <li ng-model="Snippet.project" ng-repeat="project in data.user.projects">
-              <span class="label label-default">
-                Project ID {{project.id}} Name {{project.name}}
-              </span>
+             
+              <input type="radio"  class="label label-default" ng-model="Snippet.project_id" value="project_id" />@{{project.name}}<br />
             </li>
-          </ul>
+          </ul> -->
+          <div class="checkbox" ng-repeat="project in data.user.projects">
+            <label><input type="radio" ng-model="Snippet.project_id" value="{{project.id}}" > @{{project.name}}</label>
+          </div>
+          
           <br>
-          <form ng-model="Snippet" ng-submit="postSnippet">
             <div class="form-group">
               <textarea name="snippet" id="snippet" class="form-control" cols="30" rows="10" placeholder="What did you get done this week? What are you going to do next week?" ng-model="Snippet.text"></textarea>
             </div>
+
             <div class="week">
-              <span class="label label-default" ng-model="Snippet.week">
-                October 21, 2015 - October 28, 2015
-              </span>
+              
+                <label><input type="radio" ng-model="Snippet.week" value="November 2, 2015 - November 8, 2015" >November 2, 2015 - November 8, 2015</label>
+              
+ 
             </div>
             <br>
-            <button class="btn btn-primary">
+            
+            
+            <button class="btn btn-primary" ng-click="postSnippet()">
               <i class="fa fa-send"></i>
               Post Snippet
             </button>
@@ -64,19 +72,21 @@
         </div>
       </div><!-- .post-snippet -->
 
+      
       <div class="row projects" ng-repeat="snippet in data.user.snippets">
         <div class="col-xs-10 col-xs-offset-1 project">
-
           <h2 class="project-title">
-            <a ui-sref="company.project({'project_id': data.user.user.company_id, 'company_id': project.company_id})"></a>@{{snippet.project_id}}
+            
+            <a ui-sref="company.project({'project_id': snippet.snippet.project_id, 'company_id': data.user.user.company_id})">@{{snippet.project.name}}</a>
           </h2>
+          <br>
           <div class="week">
-            Week {{snippet.week}}
+            {{snippet.snippet.week}}
           </div>
           
           <div class="snippets finished">
             <div class="snippet-text">
-              {{snippet.text}}
+              {{snippet.snippet.text}}
             </div>
           </div>
 
