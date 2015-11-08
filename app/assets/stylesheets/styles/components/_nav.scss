@@ -28,6 +28,20 @@
   button:active {
     border-color: $quinary;
   }
+
+  .dropdown-menu a {
+    color: $quinary;
+  }
+
+  .dropdown-menu a:hover,
+  .dropdown-menu a:active {
+    color: $secondary;
+    background: $quinary;
+  }
+
+  a[aria-expanded="true"] {
+    background: lighten($quinary, 10%);
+  }
 }
 
 .navbar-default .navbar-toggle .icon-bar {

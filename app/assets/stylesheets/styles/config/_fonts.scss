@@ -17,11 +17,11 @@ h4,
 h5,
 h6,
 p {
-  font-family: 'Open Sans', $font-family-serif, $font-family-sans-serif !important;
+  font-family: 'Open Sans', $font-family-serif, $font-family-sans-serif;
 }
 
 pre,
 code,
 kbd {
-  font-family: $font-family-monospace, $font-family-base !important;
+  font-family: $font-family-monospace, $font-family-base;
 }
