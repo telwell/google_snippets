@@ -19,8 +19,14 @@ class UsersController < ApplicationController
 	end
 
 	def create
+		company = Company.find_or_create_by(name: params[:company_name])
 		user = User.new(params[:user])
-		#if no such company found create a new one
+		user.company_id = company.id
+		#If a new company, need to add admin_id of current user
+		unless company.admin_id
+			company.admin_id = user.id
+		end
+	
 		respond_to do |format|
 			if user.save
 			 format.json { render json: user }
@@ -32,8 +38,10 @@ class UsersController < ApplicationController
 
 
 private
-	def user_params
-		#Strong params for user	
-	end
+  def params_list
+    params.require(:user).permit(:email, :first_name, :last_name, :phone, :location, :company_name, :user_id)
+  end
+
+  
 
 end

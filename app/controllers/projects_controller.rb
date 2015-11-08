@@ -1,4 +1,19 @@
 class ProjectsController < ApplicationController
+
+
+  def create
+    @project = Project.new(params_list)
+    @project.company_id = current_user.company_id
+    @project.parent_id = -1
+    respond_to do |format|
+      if @project.save && params[:user_id] == current_user.id
+        format.json {render json: @project}
+      else
+        format.json {render status: :unprocessable_entity}
+      end
+    end
+  end
+
 	def show
 		project = Project.find(params[:id])
     snippets = project.snippets
@@ -33,4 +48,10 @@ class ProjectsController < ApplicationController
 			format.json { render json: { project: project_full, members: members_full, subscribers: subscribers_full, snippets: snippets} }
 		end
 	end
+
+	 private
+
+  def params_list
+    params.require(:project).permit(:parent_id, :company_id, :id, :name, :description)
+  end
 end
