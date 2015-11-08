@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 		project = Project.find(params[:id])
     snippets = project.snippets
 		members = project.users
-		subscribers = project.subscriptions
+		subscribers = project.subscriptions.pluck(:user_id)
 
 		# Add some stats to project regarding current user
 		project_full = []
