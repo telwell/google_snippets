@@ -17,6 +17,9 @@
 if Rails.env == 'development'
   puts 'Development environment recognized, running `rake db:migrate:reset`'
   Rake::Task['db:migrate:reset'].invoke
+
+  puts 'Deleting development photo directory'
+  FileUtils.rm_rf("#{Rails.root}/public/system/photos")
 else
   # Other environments logic make go here
   # however Herokue requires pg to be reset or dropped via
@@ -43,7 +46,7 @@ puts 'Running seeds...'
 # multiply the count of seeded rows
 # for ALL records
 # 
-MULTIPLIER = 10
+MULTIPLIER = 1
 
 # --------------------------------------------
 # Row Multiplier
@@ -195,6 +198,22 @@ project_ids = Project.all.pluck(:id)
   }
 end
 Snippet.create!(snippets)
+
+# Photos
+puts 'Creating Photos'
+Photo.destroy_all
+users = User.all
+indexes = (1..8).to_a
+users.each do |user|
+  index = indexes.shuffle.first
+  File.open("#{Rails.root}/public/images/avatars/avatar-#{index}.png") do |f|
+    photo = Photo.create!(
+      :photo => f
+    )
+    user.avatar_id = photo.id
+  end
+  user.save!
+end
 
 puts 'done!'
 
