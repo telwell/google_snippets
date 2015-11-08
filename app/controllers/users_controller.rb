@@ -9,12 +9,20 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		# TODO: Add project name to snippets
+
 		user = User.find(params[:id])
 		projects = user.projects
+		
 		snippets = user.snippets
+		snippets_full = []
+
+		snippets.each do |snippet|
+			snippets_full.push({ snippet: snippet, project: snippet.project })
+		end
 
 		respond_to do |format|
-			format.json { render json: { user: user, projects: projects, snippets: snippets } }
+			format.json { render json: { user: user, projects: projects, snippets: snippets_full } }
 		end
 	end
 
@@ -26,7 +34,7 @@ class UsersController < ApplicationController
 		unless company.admin_id
 			company.admin_id = user.id
 		end
-	
+
 		respond_to do |format|
 			if user.save
 			 format.json { render json: user }
@@ -39,7 +47,7 @@ class UsersController < ApplicationController
 
 private
   def params_list
-    params.require(:user).permit(:email, :first_name, :last_name, :phone, :location, :company_name, :user_id)
+    params.require(:user).permit(:email, :first_name, :last_name, :phone, :location, :user_id, :user, :registration)
   end
 
   
