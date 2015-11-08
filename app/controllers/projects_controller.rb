@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
 
-
   def create
     @project = Project.new(params_list)
     @project.company_id = current_user.company_id
