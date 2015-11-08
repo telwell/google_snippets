@@ -1,4 +1,4 @@
-app.controller('navbarCtrl', ['$scope', '$location','Auth', 'storage',  function($scope, $location, Auth, storage){
+app.controller('navbarCtrl', ['$scope', '$location', 'storage',  function($scope, $location,  storage){
   
   $scope.logged = storage.auth;
   

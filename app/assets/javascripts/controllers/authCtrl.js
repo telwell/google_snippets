@@ -1,4 +1,4 @@
-app.controller('authCtrl', ['$scope', '$location','Restangular', 'Auth', 'storage', function($scope, $location, Restangular, Auth, storage){
+app.controller('authCtrl', ['$scope', '$location','Restangular', 'storage', function($scope, $location, Restangular,  storage){
   
 
   $scope.logged = storage.auth;
