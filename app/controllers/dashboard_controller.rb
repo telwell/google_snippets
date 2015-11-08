@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
     
 		subscriptions = user.subscriptions
 
+    
 		snippets = Snippet.where(:user_id => user.id).where(:project_id => user.subscriptions.pluck(:project_id))
 
 		respond_to do |format|

@@ -1,10 +1,9 @@
-app.controller('projectCtrl', ['$scope', 'Restangular', function($scope, Restangular){
-  $scope.test = "Project";
+app.controller('projectCtrl', ['$scope', 'Restangular', 'storage',function($scope, Restangular, storage){
+  
+  $scope.data = storage.data;
+  $scope.logged = storage.auth;
+  
 
-  Restangular.get('projects').customGET('project_page').then(function(response){
-  	// Stuff
-  }, function(error){
-  	// flash message error
-  })
+  
 
 }]);

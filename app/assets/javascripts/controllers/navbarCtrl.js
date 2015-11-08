@@ -2,7 +2,7 @@ app.controller('navbarCtrl', ['$scope', '$location','Auth', 'storage',  function
   
   $scope.logged = storage.auth;
   
-  console.log("In ctrl user ", $scope.logged.user);
+  console.log("In navbar ctrl user ", $scope.logged.user);
   
 
   $scope.Logout = storage.logout;

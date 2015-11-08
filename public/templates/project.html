@@ -3,10 +3,10 @@
     
     <header class="page-header">
       <h1>
-        Acquisition
+        {{data.project.project.name}}
       </h1>
       <div class="subscription">
-        <span class="text-success">
+        <span class="text-success" ng-if="logged.user.id">
           Subscribed
         </span>
         <a href="#">
@@ -15,9 +15,6 @@
       </div>
     </header>
 
-    <div class="week">
-      October 21, 2015 - October 28, 2015
-    </div>
 
     <header class="page-header">
       <div class="avatar-container">
@@ -31,97 +28,34 @@
       </p>
     </header>
 
-      <div class="project">
+      <div class="project" ng-repeat="snippet in data.project.snippets">
         <h2>
-          @aquisition
+          Snippet ID {{snippet.id}}
         </h2>
         <div class="week">
-          October 21, 2015 - October 28, 2015
+          Need a week : October 21, 2015 - October 28, 2015
         </div>
-        <div class="snippets finished">
-          <p>
-            Done this work:
-          </p>
-          <div class="snippet">
-            <h3>
-              Car Repairs
-            </h3>
-            <ul class="snippet-list">
-              <li>
-                turbo plasma engine check
-              </li>
-              <li>
-                new filter for engine
-              </li>
-              <li>
-                wired up lightning catching
-              </li>
-            </ul>
-          </div>
-
-          <div class="snippet">
-            <h3>
-              Time Traveling
-            </h3>
-            <ul class="snippet-list">
-              <li>
-                jump to the future
-              </li>
-              <li>
-                found family
-              </li>
-              <li>
-                tested skate system
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="snippets unfinished">
-          <p>
-            Will be done next week:
-          </p>
-          <div class="snippet">
-            <h3>
-              Save Family
-            </h3>
-            <ul class="snippet-list">
-              <li>
-                need to plan how to save them
-              </li>
-              <li>
-                get help
-              </li>
-              <li>
-                rescue the doc
-              </li>
-            </ul>
-          </div>
-        </div>
+        
+        <p ng-bind-html="snippet.text | rawHtml"></p>
       </div><!-- .project -->
 
   </div><!-- .subscriber-details -->
 
   <div class="col-md-5">
     
-    <div class="row">
+    <div class="row" >
       <div class="col-md-12 members">
         <h1>
-          Project Members(2)
+          Project Members ({{data.project.members.length}})
         </h1>
         <ul class="member-list">
-          <li>
-            <a href="#">
-              Michael J. Fox
+          <li ng-repeat="member in data.project.members">
+            <a ui_sref="company.user({'user_id': member.id, 'company_id': logged.user.company_id})">
+              Member id {{member.id}} {{member.name}}
             </a>
-            time traveler
+            Member role {{member.role}}
           </li>
-          <li>
-            <a href="#">
-              Christopher Lloyd
-            </a>
-            science genius
-          </li>
+          
         </ul>
       </div><!-- .members -->
 
@@ -129,11 +63,9 @@
         <form action="#" class="member-search-form">
           
           <div class="form-group">
-            <select name="members" id="members" class="form-control">
-              <option value="1">Lea Thompson</option>
-              <option value="1">Lea Thompson</option>
-              <option value="1">Lea Thompson</option>
-              <option value="1">Lea Thompson</option>
+            <select name="members" id="members" class="form-control" >
+              <option ng-repeat="member in data.project.members" value="member.id">Member {{member.id}} {{member.name}}</option>
+             
             </select>
           </div>
 
@@ -149,24 +81,16 @@
 
       <div class="col-md-12 subscribers">
         <h1>
-          Project Subscribers(3)
+          Project Subscribers ({{data.project.subscribers.length}})
         </h1>
         <ul class="subscriber-list">
-          <li>
-            <a href="#">
-              Some Subscriber
+          <li ng-repeat="subscriber in data.project.subscribers">
+            <a ui-sref="company.user({'user_id': subscriber.id, 'company_id': logged.user.company_id})">
+              ID {{subscriber.id}}
+              {{subscriber.name}}
             </a>
           </li>
-          <li>
-            <a href="#">
-              Some Subscriber
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Some Subscriber
-            </a>
-          </li>
+          
         </ul>
       </div><!-- .subscribers -->
     </div>
