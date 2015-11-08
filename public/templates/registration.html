@@ -23,6 +23,10 @@
         <label for="userlastname">Last Name</label>
         <input type="text" class="form-control"  id="userlastname" placeholder="Fox" ng-model="User.lastname">
       </div>
+       <div class="form-group">
+        <label for="usercompany">Company</label>
+        <input type="text" class="form-control"  id="usercompany" placeholder="Company Name" ng-model="User.company">
+      </div>
       <div class="form-group">
         <label for="userphone">Phone for text notifications(optional)</label>
         <input type="text" class="form-control"  id="userphone" placeholder="000-111-2222" ng-model="User.phone">
@@ -38,6 +42,7 @@
 
       Register
     </button>
+    {{User}}
   </form>
 
   

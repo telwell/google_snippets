@@ -15,6 +15,14 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
         console.log("No dashboard data returned");
       });
   };
+  obj.newProject = function(project){
+    Restangular.all('projects').post(project).then(function(response){
+      console.log("Project created", response);
+
+    }, function(error){
+      console.log("New user creation", error);
+    });
+  };
 
   obj.getUser = function(id){
     
@@ -65,13 +73,32 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
   };
 
   obj.signup = function(user){
-    Restangular.all('users').post(user).then(function(response){
-      var user = response;
-      obj.login(user.email, user.password);
+       console.log("in register function", user);
+        var ncredentials = {
+            email: user.email,
+            password: user.password,
+            password_confirmation: user.password,
+            first_name: user.firstname,
+            last_name: user.lastname,
+            phone: user.phone,
+            location: user.location,
+            company: user.company
+        };
 
-    }, function(error){
-      console.log("New user creation", error);
-    });
+        Auth.register(ncredentials).then(function(registeredUser) {
+            console.log("registered ", registeredUser); // => {id: 1, ect: '...'};
+            $location.path('/company'+registeredUser.company_id+'/dashboard');
+        }, function(error) {
+            console.log('Registration failed...');
+        });
+
+    // Restangular.all('users').post(user).then(function(response){
+    //   var user = response;
+    //   obj.login(user.email, user.password);
+
+    // }, function(error){
+    //   console.log("New user creation", error);
+    // });
   };
 
   obj.login = function(email, password){

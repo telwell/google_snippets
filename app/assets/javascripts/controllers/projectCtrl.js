@@ -2,7 +2,6 @@ app.controller('projectCtrl', ['$scope', 'Restangular', 'storage',function($scop
   
   $scope.data = storage.data;
   $scope.logged = storage.auth;
-  
 
   
 
