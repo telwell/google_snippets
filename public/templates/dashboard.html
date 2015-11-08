@@ -13,7 +13,7 @@
       <div class="col-md-12 snippets-feed">
 
         <ul class="list-group users-snippets-list">
-          
+          <li ng-hide="data.dashboard.snippets.length == 0">You don't have latest snippet from subscribtions yet</li>
           <li class="list-group-item user-snippets-list-item" ng-repeat="snippet in data.dashboard.snippets">
             
             <div class="user-snippets">
@@ -31,9 +31,7 @@
                     @{{snippet.project.name}}
                   </h4>
                 </div>
-              </header>
-
-              
+              </header>  
               <div class="project">
                 <div class="week">
                   {{snippet.snippet.week}}
@@ -53,12 +51,19 @@
       </div><!-- .snippets-feed -->
     </div><!-- .recent-snippets -->
 
-    <div class="col-xs-10 col-xs-offset-1 col-md-5 project-subscriptions" ng-hide="data.dashboard.projects.length==0">
+    <div class="col-xs-10 col-xs-offset-1 col-md-5 project-subscriptions" >
       <header class="page-header">
         <h1>
           <i class="fa fa-folder-open"></i>
           Projects
         </h1>
+        <button class="btn btn-default" ng-hide="projectForm" ng-click="projectForm=true">Create a project</button>
+        <form ng-hide="projectForm==undefined" ng-model="Project" ng-submit="newProject()">
+          <input type="text" ng-model="Project.name" placeholder="Name">
+          <input type="text" ng-model="Project.description" placeholder="Description">
+          <button type="submit">Save project</button>
+
+        </form>
       </header>
 
       <ul class="list-group project-list">
