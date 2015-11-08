@@ -79,9 +79,11 @@
           Project Subscribers ({{data.project.subscribers.length}})
         </h1>
         <ul class="subscriber-list">
+
           <li ng-repeat="subscriber in data.project.subscribers">
-            <a ui-sref="company.user({'user_id': subscriber.id, 'company_id': logged.user.company_id})">
+            <a ui-sref="company.user({'user_id': subscriber.user_id, 'company_id': logged.user.company_id})">
               {{subscriber.user_name}}
+              
             </a>
           </li>
           
