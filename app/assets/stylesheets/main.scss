@@ -1,5 +1,21 @@
 //Main
 
 @import 'styles/config/colors';
+@import 'styles/config/fonts';
 @import 'styles/config/utils';
 @import 'styles/components/nav';
+
+//----------------------------
+// Shared Styles
+//----------------------------
+
+header.user {
+  .avatar-container {
+    max-width: 128px;
+  }
+
+  .avatar-container,
+  .user-details {
+    float: left;
+  }
+}
