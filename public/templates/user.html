@@ -1,10 +1,10 @@
-<div id="user-show" class="row">
+<div id="user" class="row">
   <div class="col-md-8 center-block">
     
-    <header class="page-header">
+    <header class="page-header user clearfix">
       <div class="avatar-container">
-        
-        <img style="height:100px;" src="images/avatar-1.png" alt="Avatar">
+
+      <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
       </div>
       <h1>
         {{username}}
@@ -12,6 +12,7 @@
       <p ng-repeat="project in data.user.projects">
         Projects: {{project.name}}
       </p>
+
     </header>
     Logged ID {{logged.user.id}}
     User page ID {{data.user.user.id}}
@@ -32,6 +33,7 @@
               Project ID {{project.id}} Name {{project.name}}
             </span>  
             <textarea name="snippet" id="snippet" class="form-control" cols="30" rows="10" placeholder="What did you get done this week? What are you going to do next week?" ng-model="Snippet.text"></textarea>
+
           </div>
           <div class="week">
             <span class="label label-default" ng-model="Snippet.week">
@@ -50,8 +52,10 @@
 
     <div class="projects" ng-repeat="snippet in data.user.snippets">
       <div class="project">
+
         <h2>
           Project id for now @{{snippet.project_id}}
+
         </h2>
         
         <div class="snippets finished">

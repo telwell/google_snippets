@@ -1,0 +1,27 @@
+//Font
+
+//Normal
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+
+//Monospaced
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base:        $font-family-sans-serif;
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: 'Open Sans', $font-family-serif, $font-family-sans-serif;
+}
+
+pre,
+code,
+kbd {
+  font-family: $font-family-monospace, $font-family-base;
+}
