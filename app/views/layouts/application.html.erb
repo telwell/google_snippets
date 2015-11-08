@@ -11,10 +11,19 @@
 
     <%= csrf_meta_tags %>
   </head>
+
   <body ng-app = "app">
 
     <%= render :partial => 'shared/flash' %>
     <%= yield %>
-
+	
+	<script type="text/javascript">
+	  var rumbleBannerBackgroundColor, rumbleBannerTextColor, rumbleBannerLinkColor, rumbleBannerPlacement;
+	  rumbleBannerBackgroundColor = "#161616";
+	  rumbleBannerTextColor = "#b0b0b0";
+	  rumbleBannerLinkColor = "#ffffff";
+	  rumbleBannerPlacement = "top"; // Optionally replace with "bottom".
+	</script>
+	<script src="https://d4nnn7wspfa3h.cloudfront.net/banner-2015.js" type="text/javascript"></script>
   </body>
 </html>
