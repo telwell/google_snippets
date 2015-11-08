@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(params_list)
     @project.company_id = current_user.company_id
     @project.parent_id = -1
-    binding.pry
+    
     respond_to do |format|
       if @project.save && params[:user_id] == current_user.id
         format.json {render json: @project}
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
 			project_role = "No Role"
 		end
 
-		project_full.push({ project: project, subscribed?: current_user.subscribed_project(project.id), role: project_role })
+		project_full.push({ project: project, subscribed: current_user.subscribed_project(project.id), role: project_role })
 
 		# Add Full Names for all members
 		members_full = []

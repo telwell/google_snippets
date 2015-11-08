@@ -11,10 +11,10 @@
       </header>
 
       <div class="col-md-12 snippets-feed">
-
+          <h4 ng-hide="data.dashboard.snippets.length > 0">No subscribtions yet</h4>
         <ul class="list-group users-snippets-list">
           data {{data.dashboard.snippets.length}}
-          <li ng-hide="data.dashboard.snippets.length == 0">No subscribtions yet</li>
+          
           <li class="list-group-item user-snippets-list-item" ng-repeat="snippet in data.dashboard.snippets">
             
             <div class="user-snippets">
