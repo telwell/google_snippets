@@ -13,7 +13,7 @@
       <div class="col-md-12 snippets-feed">
           <h4 ng-hide="data.dashboard.snippets.length > 0">No subscribtions yet</h4>
         <ul class="list-group users-snippets-list">
-          data {{data.dashboard.snippets.length}}
+          
           
           <li class="list-group-item user-snippets-list-item" ng-repeat="snippet in data.dashboard.snippets">
             
@@ -64,16 +64,23 @@
         </h1>
         <button class="btn btn-default" ng-hide="projectForm" ng-click="projectForm=true">Create a project</button>
         <form ng-hide="projectForm==undefined" ng-model="Project" ng-submit="newProject()">
-          <input type="text" ng-model="Project.name" placeholder="Name">
-          <input type="text" ng-model="Project.description" placeholder="Description">
-          <button type="submit">Save project</button>
-
+          <div class="form-group">
+            <input type="text" ng-model="Project.name" placeholder="Name" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" ng-model="Project.description" placeholder="Description" class="form-control">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Save project
+          </button>
         </form>
       </header>
 
       <ul class="list-group project-list">
 
-        <li class="list-group-item clearfix"  ng-repeat="project in data.dashboard.projects">
+        <li class="list-group-item clearfix"  ng-repeat="project in data.dashboard.projects | orderBy:'-project.created_at'">
           <div class="pull-left">
 
           <h4>@{{project.project.name }}</h4>

@@ -4,9 +4,13 @@ class ProjectsController < ApplicationController
     @project = Project.new(params_list)
     @project.company_id = current_user.company_id
     @project.parent_id = -1
-    
+
     respond_to do |format|
       if @project.save && params[:user_id] == current_user.id
+
+      	# Should have a way to assign role in the future for this.
+      	pu = ProjectsUser.new(:project_id => @project.id, :user_id => current_user.id)
+      	pu.save!
         format.json {render json: @project}
       else
         format.json {render status: :unprocessable_entity}

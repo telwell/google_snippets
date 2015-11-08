@@ -10,7 +10,7 @@
         </div>
         <div class="user-details">
           <h3 class="user-title">
-            {{username}}
+            {{data.user.user.first_name}}
           </h3>
           Projects:
           <p class="user-projects" ui-sref="company.project({'project_id': project.id, 'company_id': project.company_id})" ng-repeat="project in data.user.projects">

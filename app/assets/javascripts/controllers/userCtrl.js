@@ -7,6 +7,6 @@ app.controller('userCtrl', ['$scope', 'storage', function($scope, storage){
     // storage.data.user.snippets.push({snippet: $scope.Snippet, project: $scope.Snippet});
   };
   
-  $scope.username = storage.data.user.user.first_name;
+  // $scope.username = storage.data.user.user.first_name;
   
 }]);
