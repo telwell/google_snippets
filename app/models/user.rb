@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
 	def name
 		return "#{self.first_name} #{self.last_name}"
 	end
+
+	def subscribed_project(project_id)
+		self.subscriptions.pluck(:project_id).include?(project_id) ? true : false
+	end
 end

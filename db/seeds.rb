@@ -1,7 +1,7 @@
 # Companies
 puts 'Creating Companies'
 Company.destroy_all
-10.times do
+2.times do
 	c = Company.new
 	c.name = Faker::Company.name
 	c.save!
@@ -49,9 +49,10 @@ end
 puts 'Creating ProjectsUser'
 ProjectsUser.destroy_all
 10.times do
-	project_ids = Project.all.pluck(:id)
+	temp_user = User.find(user_ids.sample)
+	project_ids = Project.where(:company_id => temp_user.company_id).pluck(:id)
 	pu = ProjectsUser.new
-	pu.user_id = user_ids.sample
+	pu.user_id = temp_user.id
 	pu.project_id = project_ids.sample
 	pu.save!
 end
