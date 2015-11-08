@@ -15,22 +15,22 @@
 # all in one go!
 #
 if Rails.env == 'development'
-	puts 'Development environment recognized, running `rake db:migrate:reset`'
-	Rake::Task['db:migrate:reset'].invoke
+  puts 'Development environment recognized, running `rake db:migrate:reset`'
+  Rake::Task['db:migrate:reset'].invoke
 else
-	# Other environments logic make go here
-	# however Herokue requires pg to be reset or dropped via
-	# toolbelt via
-	# $ heroku pg:reset DATABASE`
-	#
-	# where DATABASE is the database-name-1234
-	# formatted like that in Heroku dashboard
-	# Not possible in seeds file when in production
-	# 
-	# e.g. can't drop database here in production
-	# 
-	# See this link for more details
-	# https://devcenter.heroku.com/articles/heroku-postgresql
+  # Other environments logic make go here
+  # however Herokue requires pg to be reset or dropped via
+  # toolbelt via
+  # $ heroku pg:reset DATABASE`
+  #
+  # where DATABASE is the database-name-1234
+  # formatted like that in Heroku dashboard
+  # Not possible in seeds file when in production
+  # 
+  # e.g. can't drop database here in production
+  # 
+  # See this link for more details
+  # https://devcenter.heroku.com/articles/heroku-postgresql
 end
 
 puts 'Running seeds...'
@@ -48,86 +48,154 @@ MULTIPLIER = 1
 # Companies
 puts 'Creating Companies'
 Company.destroy_all
+companies = []
 (MULTIPLIER * 10).times do
-	c = Company.new
-	c.name = Faker::Company.name
-	c.save!
+  companies << {
+    :name => Faker::Company.name
+  }
 end
+Company.create!(companies)
+
 
 # Users
 puts 'Creating Users'
 User.destroy_all
+users = []
+companie_ids = Company.all.pluck(:id)
 (MULTIPLIER * 25).times do |i|
-	companies = Company.all.pluck(:id)
-	u = User.new
-	u.company_id = companies.sample
-	u.first_name = Faker::Name.first_name
-	u.last_name = Faker::Name.last_name
-	u.email = "email#{i}@test.com"
-	u.phone = Faker::PhoneNumber.phone_number
-	u.location = "#{Faker::Address.city}, #{Faker::Address.state_abbr}"
-	u.password = 'password'
-	u.password_confirmation = 'password'
-	u.save!	
+  u = User.new
+  # u.company_id = companies.sample
+  # u.first_name = Faker::Name.first_name
+  # u.last_name = Faker::Name.last_name
+  # u.email = "email#{i}@test.com"
+  # u.phone = Faker::PhoneNumber.phone_number
+  # u.location = "#{Faker::Address.city}, #{Faker::Address.state_abbr}"
+  # u.password = 'password'
+  # u.password_confirmation = 'password'
+  # u.save!
+
+  users << {
+    :company_id => companie_ids.sample,
+    :first_name => Faker::Name.first_name,
+    :last_name => Faker::Name.last_name,
+    :email => "email#{i}@test.com",
+    :phone => Faker::PhoneNumber.phone_number,
+    :location => "#{Faker::Address.city}, #{Faker::Address.state_abbr}",
+    :password => 'password',
+    :password_confirmation => 'password'
+  }
 end
+User.create!(users)
 
 # Add admin_id to companies
 puts 'Creating Add admin_id to companies'
 companies = Company.all
 user_ids = User.all.pluck(:id)
 companies.each do |company|
-	company.update(:admin_id => user_ids.sample)
+  company.update(:admin_id => user_ids.shuffle.pop)
 end
 
 #Projects
 puts 'Creating Projects'
 Project.destroy_all
-(MULTIPLIER * 25).times do
-	company_ids = Company.all.pluck(:id)
-	p = Project.new
-	p.parent_id = -1
-	p.company_id = company_ids.sample
-	p.name = Faker::Name.title
-	p.description = Faker::Lorem.sentence(3)
-	p.save!	
+projects =[]
+company_ids = Company.all.pluck(:id)
+project_ids = Project.all.pluck(:id)
+(MULTIPLIER * 25).times do |i|
+  # p = Project.new
+  # p.parent_id = -1
+  # p.company_id = company_ids.sample
+  # p.name = Faker::Name.title
+  # p.description = Faker::Lorem.sentence(3)
+  # p.save!
+
+  projects << {
+    :parent_id => -1,
+    :company_id => company_ids[i % company_ids.length],
+    :name => Faker::Name.title,
+    :description => Faker::Lorem.sentence(10)
+  }
 end
+Project.create!(projects)
 
 #ProjectsUser
 puts 'Creating ProjectsUser'
 ProjectsUser.destroy_all
-(MULTIPLIER * 25).times do
-	temp_user = User.find(user_ids.sample)
-	project_ids = Project.where(:company_id => temp_user.company_id).pluck(:id)
-	pu = ProjectsUser.new
-	pu.user_id = temp_user.id
-	pu.project_id = project_ids.empty? ? 1 : project_ids.sample # <<< performs check to see if we have IDs first, NOT NULL constraint was throwing error
-	pu.role = Faker::Name.title
-	pu.save!
+users = User.all
+projects_users = []
+(MULTIPLIER * 25).times do |i|
+  # temp_user = User.find(user_ids.sample)
+  # project_ids = Project.where(:company_id => temp_user.company_id).pluck(:id)
+  # pu = ProjectsUser.new
+  # pu.user_id = temp_user.id
+  # pu.project_id = project_ids.empty? ? 1 : project_ids.sample # <<< performs check to see if we have IDs first, NOT NULL constraint was throwing error
+  # pu.role = Faker::Name.title
+  # pu.save!
+
+  user = users[i % users.length]
+  project_id = user.project_ids.present? ? user.project_ids[i % user.project_ids.length] : 1 # <<< performs check to see if we have IDs first, NOT NULL constraint was throwing error
+  projects_users << {
+    :user_id => user.id,
+    :project_id => project_id,
+    :role => Faker::Name.title
+  }
 end
+ProjectsUser.create!(projects_users)
 
 #Subscriptions
 puts 'Creating Subscriptions'
 Subscription.destroy_all
-(MULTIPLIER * 50).times do
-	project_ids = Project.all.pluck(:id)
-	s = Subscription.new
-	s.user_id = user_ids.sample
-	s.project_id = project_ids.sample
-	s.save!	
+subscriptions = []
+user_ids = User.all.pluck(:id)
+project_ids = Project.all.pluck(:id)
+(MULTIPLIER * 50).times do |i|
+  # s = Subscription.new
+  # s.user_id = user_ids.sample
+  # s.project_id = project_ids.sample
+  # s.save!
+
+  subscriptions << {
+    :user_id => user_ids[i % user_ids.length],
+    :project_id => project_ids[i % project_ids.length]
+  }
 end
+Subscription.create!(subscriptions)
 
 #Snippets
 puts 'Creating Snippets'
 Snippet.destroy_all
-(MULTIPLIER * 100).times do
-	project_ids = Project.all.pluck(:id)
-	s = Snippet.new
-	s.user_id = user_ids.sample
-	s.project_id = project_ids.sample
-	s.text = Faker::Lorem.sentence(20) # <<< increased snippet length
-	s.save!
+snippets = []
+user_ids = User.all.pluck(:id)
+project_ids = Project.all.pluck(:id)
+(MULTIPLIER * 100).times do |i|
+  # s = Snippet.new
+  # s.user_id = user_ids.sample
+  # s.project_id = project_ids.sample
+  # s.text = Faker::Lorem.sentence(20) # <<< increased snippet length
+  # s.save!
+
+  day = (i % 52).weeks.ago
+  monday = day.beginning_of_week.strftime('%A, %B %d')
+  sunday = day.end_of_week.strftime('%A, %B %d')
+  snippets << {
+    :user_id => user_ids[i % user_ids.length],
+    :project_id => project_ids[i % project_ids.length],
+    :text => Faker::Lorem.sentence(20), # <<< increased snippet length
+    :week => "#{monday} - #{sunday}"
+  }
 end
+Snippet.create!(snippets)
 
 puts 'done!'
+
+
+
+
+
+
+
+
+
+
 
 
