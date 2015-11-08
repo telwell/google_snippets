@@ -3,12 +3,14 @@
     
     <header class="page-header">
       <h1>
-        {{data.project.project.name}}
+        {{data.project.project[0].project.name}}
       </h1>
+      <p>{{data.project.project[0].project.description}}</p>
       <div class="subscription">
-        <span class="text-success" ng-if="{{data.project.subscribed}}">
-          Subscribed
+        <span class="text-success" ng-if="data.project.project[0].subscribed">
+          You Subscribed 
         </span>
+      
 <!--         <a href="#">
           Edit
         </a> -->
@@ -19,27 +21,16 @@
 
 
       <div class="project" ng-repeat="snippet in data.project.snippets">
-<!--         <header class="page-header user clearfix">
-          <div class="avatar-container">
-            <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
-          </div>
-          <div class="user-details">
-            <h1>
-              {{snippet}}
-            </h1>
-            <p>
-              Projects: Acquisition, Traveling
-            </p>
-          </div>
-        </header> -->
+
         <h2>
-          Snippet ID {{snippet.id}}
+          <!-- {{snippet.snippet.id}} -->
         </h2>
         <div class="week">
-          Need a week : October 21, 2015 - October 28, 2015
+            <h4>{{snippet.snippet.week}}</h4>
+           
         </div>
         
-        <p>Text{{snippet.text}}</p>
+        <p>{{snippet.snippet.text}}</p>
       </div><!-- .project -->
 
 
