@@ -18,6 +18,12 @@
 /public/assets
 
 # --------
+# IDEs
+# --------
+.idea
+
+
+# --------
 # Mac OS X
 # --------
 */.DS_Store

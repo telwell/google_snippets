@@ -18,8 +18,7 @@
 //= require bootstrap.min.js
 //= require restangular.js
 //= require underscore.js
-//= require devise-min.js
-//= require devise.js
+//= require angular-devise
 //= require flash.js
 //= require_tree .
 
