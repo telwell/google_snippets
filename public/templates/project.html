@@ -3,7 +3,7 @@
     
     <header class="page-header">
       <h1>
-        {{data.project.project.name}}
+        Data{{data.project}}
       </h1>
       <div class="subscription">
         <span class="text-success" ng-if="logged.user.id">
@@ -39,7 +39,7 @@
           Need a week : October 21, 2015 - October 28, 2015
         </div>
         
-        <p ng-bind-html="snippet.text | rawHtml"></p>
+        <p>Text{{snippet.text}}</p>
       </div><!-- .project -->
 
 
@@ -53,12 +53,12 @@
           Project Members ({{data.project.members.length}})
         </h1>
         <ul class="member-list">
-          <li ng-repeat="member in data.project.members">
+         <!--  <li ng-repeat="member in data.project.members">
             <a ui_sref="company.user({'user_id': member.id, 'company_id': logged.user.company_id})">
-              Member id {{member.id}} {{member.name}}
+              {{member.user_name}}
             </a>
-            Member role {{member.role}}
-          </li>
+            {{member.role}}
+          </li> -->
           
         </ul>
       </div><!-- .members -->
@@ -68,7 +68,7 @@
           
           <div class="form-group">
             <select name="members" id="members" class="form-control" >
-              <option ng-repeat="member in data.project.members" value="member.id">Member {{member.id}} {{member.name}}</option>
+              <option ng-repeat="member in data.project.members" value="member.user_name">{{member.user_name}}</option>
              
             </select>
           </div>
