@@ -6,19 +6,11 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
     "content-type":"application/json"
   });
 }])
-// .config([
-//   "$httpProvider", function($httpProvider) {
-//     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
-//   }
-// ])
+
 .config(function(AuthProvider) {
         // Configure Auth service with AuthProvider
     })
-.filter('rawHtml', ['$sce', function($sce){
-  return function(val) {
-    return $sce.trustAsHtml(val);
-  };
-}])
+
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     $stateProvider
