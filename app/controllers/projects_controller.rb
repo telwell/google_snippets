@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
 
-
   def create
     @project = Project.new(params_list)
     @project.company_id = current_user.company_id
     @project.parent_id = -1
+    binding.pry
     respond_to do |format|
       if @project.save && params[:user_id] == current_user.id
         format.json {render json: @project}
@@ -44,8 +44,14 @@ class ProjectsController < ApplicationController
 			subscribers_full.push({ user_id: subscriber, user_name: User.find(subscriber).name })
 		end
 
+		# Add full snippet info
+		snippets_full = []
+		snippets.each do |snippet|
+			snippets_full.push({ snippet: snippet, author_name: snippet.user.name })
+		end
+
 		respond_to do |format|
-			format.json { render json: { project: project_full, members: members_full, subscribers: subscribers_full, snippets: snippets} }
+			format.json { render json: { project: project_full, members: members_full, subscribers: subscribers_full, snippets: snippets_full } }
 		end
 	end
 
