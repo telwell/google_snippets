@@ -3,9 +3,14 @@ Rails.application.routes.draw do
 	# root 'users#new'
 
   resources :users do
-  	resource :dashboard
+  	
   	resources :photos, :only => [:new, :create]
   end
+
+  
+  resources :dashboard, only: [:show]
+  resources :projects, only: [:show]
+
 
   get 'projects/:id/project_page' => 'projects#project_page'
 

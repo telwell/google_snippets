@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-	def project_page
+	def show
 		project = Project.find(params[:id])
 		members = project.users
 		subscribers = project.subscriptions

@@ -18,8 +18,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <a ui-sref="company.dashboard({'company_id': logged.user.company_id})">Dashboard</a>
       <a ui-sref="company.project({'project_id': 8, 'company_id': logged.user.company_id})">Project</a>
-      <a href="/#/snippet/1">Snippet</a>
-      <a href="/#/user/1">User</a>
+      <a ui-sref="company.user({'user_id': logged.user.id, 'company_id': logged.user.company_id})">{{logged.user.first_name}}</a>
+      <a ui-sref="company.snippet({'snippet_id': 1, 'company_id': logged.user.company_id})">Snippet</a>
+
 
       <button ng-hide="logged.authorized" type="button" class="btn btn-default 
       navbar-btn navbar-right" ui-sref="auth">Sign in</button>

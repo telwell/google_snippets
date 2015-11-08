@@ -14,6 +14,11 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
 .config(function(AuthProvider) {
         // Configure Auth service with AuthProvider
     })
+.filter('rawHtml', ['$sce', function($sce){
+  return function(val) {
+    return $sce.trustAsHtml(val);
+  };
+}])
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     $stateProvider
@@ -78,8 +83,8 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
           }
         }
       })
-      .state('user',{
-        url: '/user/:id',
+      .state('company.user',{
+        url: '/user/:user_id',
         views: {
           '':{
             templateUrl: 'templates/user.html',
@@ -94,7 +99,7 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
         }
       })
 
-      .state('snippet',{
+      .state('company.snippet',{
         url: '/snippet/:snippet_id',
         views: {
           '':{
