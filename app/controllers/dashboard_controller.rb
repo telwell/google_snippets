@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
 	def show
-		user = User.find(params[:id])
+		user = current_user
 
 		projects = Company.find(user.company_id).projects
 		

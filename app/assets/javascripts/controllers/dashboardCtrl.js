@@ -1,6 +1,6 @@
 app.controller('dashboardCtrl', ['$scope', 'storage', function($scope, storage){
   $scope.data = storage.data;
-  console.log("Dashboard data is ", $scope.data)
+  console.log("Dashboard data is ", $scope.data);
   $scope.logged = storage.auth;
   
 
