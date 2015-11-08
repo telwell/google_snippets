@@ -9,7 +9,7 @@ class DashboardController < ApplicationController
 		projects_subs = []
 
 		projects.each do |project|
-			projects_subs.push({ project: project, subscribed?: user.subscribed_project(project.id) })
+			projects_subs.push({ project: project, subscribed: user.subscribed_project(project.id) })
 		end
 
 		snippets = Snippet.where(:project_id => user.subscriptions.pluck(:project_id))

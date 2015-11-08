@@ -1,7 +1,8 @@
 app.controller('dashboardCtrl', ['$scope', 'storage', function($scope, storage){
   $scope.data = storage.data;
+  console.log("Dashboard data is ", $scope.data)
   $scope.logged = storage.auth;
-  storage.getDashboard($scope.logged.user.id);
+  
 
   $scope.newProject = function(){
     storage.newProject($scope.Project);

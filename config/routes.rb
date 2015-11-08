@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   resources :dashboard, only: [:show]
   resources :projects, only: [:show, :create]
+  resources :snippets, only: [:create]
 
 
   get 'projects/:id/project_page' => 'projects#project_page'
