@@ -3,6 +3,7 @@ ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
+gem 'bundler', '>= 1.8.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -28,11 +29,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 
 # Add Paperclip for image attachment
-gem "paperclip", "~> 4.3"
+gem 'paperclip', '~> 4.3'
+
+# Faker to help seed our DB
+gem 'faker'
+
+# Add Hirb to help with DB on heroku
+gem 'hirb'
 
 #Angular
-source "https://rails-assets.org" do
-  gem "rails-assets-angular-devise"
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular-devise'
 end
 
 gem 'angular_rails_csrf', '= 1.0.3'
@@ -54,7 +61,6 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-  gem 'faker'
   # Get some email testing up
   gem "letter_opener"
 end

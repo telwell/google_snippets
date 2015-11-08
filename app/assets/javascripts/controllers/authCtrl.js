@@ -19,7 +19,10 @@ app.controller('authCtrl', ['$scope', '$location','Restangular', 'storage', func
 
   $scope.$on('devise:login', function(event, currentUser) {
       // after a login, a hard refresh, a new tab
-      $location.path('/dashboard');
+      console.log("Logged in devise", currentUser.company_id);
+      var path = 'company/'+currentUser.company_id+'/dashboard';
+      
+      $location.path(path);
   });
 
   // $scope.$on('devise:new-session', function(event, currentUser) {
