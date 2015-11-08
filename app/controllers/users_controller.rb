@@ -18,6 +18,18 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def create
+		user = User.new(params[:user])
+		#if no such company found create a new one
+		respond_to do |format|
+			if user.save
+			 format.json { render json: user }
+			else
+		 	 format.json { render json: "false"}
+		 	end
+		end
+	end
+
 
 private
 	def user_params

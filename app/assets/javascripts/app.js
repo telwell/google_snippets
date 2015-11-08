@@ -130,6 +130,34 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
             controller: 'navbarCtrl'
           }
         }
+        // ,
+        // resolve: {
+        //   'check': function( $stateParams, $location, storage){
+        //     storage.checkAuth();
+
+        //   }
+        // }
+      })
+       .state('registration',{
+        url: '/registration',
+        views: {
+          '':{
+            templateUrl: 'templates/registration.html',
+            controller: 'authCtrl'
+
+          },
+          'navbar' : {
+            templateUrl: 'templates/partials/navbar.html',
+            controller: 'navbarCtrl'
+          }
+        }
+        // ,
+        // resolve: {
+        //   'check': function( $stateParams, $location, storage){
+        //     storage.checkAuth();
+
+        //   }
+        // }
       });
 
       $urlRouterProvider.otherwise('/');
