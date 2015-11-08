@@ -11,196 +11,43 @@
 
       <ul class="list-group users-snippets-list">
         
-        <li class="list-group-item user-snippets-list-item">
+        <li class="list-group-item user-snippets-list-item" ng-repeat="snippet in data.dashboard.snippets">
           
-          <div class="user-snippets">
+          <div class="user-snippets" >
 
             <header class="page-header">
               <div class="avatar-container">
-                <img src="https://robohash.org/micheal-j-fox" alt="Avatar">
+                <img style="height:100px;" src="https://robohash.org/micheal-j-fox" alt="Avatar">
               </div>
               <h1>
-                Michael J. Fox
+                {{snippet.id}}
               </h1>
               <p>
-                Projects: Acquisition, Traveling
+                Projects: of this user
               </p>
             </header>
 
-            <div class="week">
-                October 21, 2015 - October 28, 2015
-            </div>
-
             <div class="project">
               <h2>
-                @aquisition
+                User projects: @{{snippet.project_id}}
               </h2>
               <div class="week">
+                Need a week for snippet
+                <br>
                 October 21, 2015 - October 28, 2015
               </div>
               <div class="snippets finished">
-                <p>
-                  Done this work:
+                <p ng-bind-html="snippet.text | rawHtml">
+                  
                 </p>
-                <div class="snippet">
-                  <h3>
-                    Car Repairs
-                  </h3>
-                  <ul class="snippet-list">
-                    <li>
-                      turbo plasma engine check
-                    </li>
-                    <li>
-                      new filter for engine
-                    </li>
-                    <li>
-                      wired up lightning catching
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="snippet">
-                  <h3>
-                    Time Traveling
-                  </h3>
-                  <ul class="snippet-list">
-                    <li>
-                      jump to the future
-                    </li>
-                    <li>
-                      found family
-                    </li>
-                    <li>
-                      tested skate system
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="snippets unfinished">
-                <p>
-                  Will be done next week:
-                </p>
-                <div class="snippet">
-                  <h3>
-                    Save Family
-                  </h3>
-                  <ul class="snippet-list">
-                    <li>
-                      need to plan how to save them
-                    </li>
-                    <li>
-                      get help
-                    </li>
-                    <li>
-                      rescue the doc
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              </div> 
             </div><!-- .project -->
-
           </div><!-- .user-snippets 1 -->
 
         </li><!-- .user-snippets-list-item 1 -->
-
-        <li class="list-group-item user-snippets-list-item">
-          
-          <div class="user-snippets">
-
-            <header class="page-header">
-              <div class="avatar-container">
-                <img src="https://robohash.org/micheal-j-fox" alt="Avatar">
-              </div>
-              <h1>
-                Michael J. Fox
-              </h1>
-              <p>
-                Projects: Acquisition, Traveling
-              </p>
-            </header>
-
-            <div class="week">
-                October 21, 2015 - October 28, 2015
-            </div>
-
-            <div class="project">
-              <h2>
-                @aquisition
-              </h2>
-              <div class="week">
-                October 21, 2015 - October 28, 2015
-              </div>
-              <div class="snippets finished">
-                <p>
-                  Done this work:
-                </p>
-                <div class="snippet">
-                  <h3>
-                    Car Repairs
-                  </h3>
-                  <ul class="snippet-list">
-                    <li>
-                      turbo plasma engine check
-                    </li>
-                    <li>
-                      new filter for engine
-                    </li>
-                    <li>
-                      wired up lightning catching
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="snippet">
-                  <h3>
-                    Time Traveling
-                  </h3>
-                  <ul class="snippet-list">
-                    <li>
-                      jump to the future
-                    </li>
-                    <li>
-                      found family
-                    </li>
-                    <li>
-                      tested skate system
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="snippets unfinished">
-                <p>
-                  Will be done next week:
-                </p>
-                <div class="snippet">
-                  <h3>
-                    Save Family
-                  </h3>
-                  <ul class="snippet-list">
-                    <li>
-                      need to plan how to save them
-                    </li>
-                    <li>
-                      get help
-                    </li>
-                    <li>
-                      rescue the doc
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div><!-- .project -->
-
-          </div><!-- .user-snippets 2 -->
-
-        </li><!-- .user-snippets-list-item 2 -->
-
       </ul>
 
     </div><!-- .snippets-feed -->
-
   </div><!-- .recent-snippets -->
 
   <div class="col-md-5 project-subscriptions">
@@ -208,91 +55,15 @@
       Projects
     </h1>
     <ul class="list-group project-list">
-      <li class="list-group-item clearfix">
-        Acquisition
+
+      <li class="list-group-item clearfix" ng-repeat="project in data.dashboard.projects">
+        {{project.name}}
         <a href="#" class="btn btn-success pull-right">
           <i class="fa fa-check"></i>
-          Subscribed
+          Subscribed?
         </a>
       </li>
-      <li class="list-group-item clearfix">
-        Sales/EDU
-        <a href="#" class="btn btn-success pull-right">
-          <i class="fa fa-check"></i>
-          Subscribed
-        </a>
-      </li>
-      <li class="list-group-item clearfix">
-        Product Development (Acquisition)
-        <a href="#" class="btn btn-success pull-right">
-          <i class="fa fa-check"></i>
-          Subscribed
-        </a>
-      </li>
-      <li class="list-group-item clearfix">
-        Product Marketing
-        <a href="#" class="btn btn-success pull-right">
-          <i class="fa fa-check"></i>
-          Subscribed
-        </a>
-      </li>
-      <li class="list-group-item clearfix">
-        <ul class="list-group">
-          <li class="list-group-item clearfix">
-            Nested Project
-            <a href="#" class="btn btn-success pull-right">
-              <i class="fa fa-check"></i>
-              Subscribed
-            </a>
-          </li>
-          <li class="list-group-item clearfix">
-            Nested Project
-            <a href="#" class="btn btn-success pull-right">
-              <i class="fa fa-check"></i>
-              Subscribed
-            </a>
-          </li>
-          <li class="list-group-item clearfix">
-            Nested Project
-            <a href="#" class="btn btn-success pull-right">
-              <i class="fa fa-check"></i>
-              Subscribed
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="list-group-item clearfix">
-        Native Applications
-        <a href="#" class="btn btn-success pull-right">
-          <i class="fa fa-check"></i>
-          Subscribed
-        </a>
-      </li>
-      <li class="list-group-item clearfix">
-        <ul class="list-group">
-          <li class="list-group-item clearfix">
-            Nested Project
-            <a href="#" class="btn btn-success pull-right">
-              <i class="fa fa-check"></i>
-              Subscribed
-            </a>
-          </li>
-          <li class="list-group-item clearfix">
-            Nested Project
-            <a href="#" class="btn btn-success pull-right">
-              <i class="fa fa-check"></i>
-              Subscribed
-            </a>
-          </li>
-          <li class="list-group-item clearfix">
-            Nested Project
-            <a href="#" class="btn btn-success pull-right">
-              <i class="fa fa-check"></i>
-              Subscribed
-            </a>
-          </li>
-        </ul>
-      </li>
+      
     </ul>
   </div><!-- project-subscriptions -->
 </div>

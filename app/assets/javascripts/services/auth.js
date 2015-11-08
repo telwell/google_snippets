@@ -1,6 +1,22 @@
 app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth', function($http, $location, $stateParams,Restangular, Auth){
   var obj = {};
+  obj.data = {};
+  //Data
 
+  obj.getDashboard = function(id){
+    
+    Restangular.one('dashboard', id).get().then(function(response){
+      console.log("Data", response);
+      obj.data.dashboard = response;
+
+
+    },
+      function(error){
+        console.log("No dashboard data returned");
+      });
+  };
+
+  //Authorization
   obj.auth = {authorized: Auth.isAuthenticated()};
 
   obj.checkAuth = function(company_id){
