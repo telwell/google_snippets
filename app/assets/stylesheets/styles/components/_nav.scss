@@ -11,20 +11,20 @@
     color: $secondary;
   }
 
-  a.btn,
+  a,
   button {
     background: $quinary;
   }
 
-  a.btn:hover,
-  a.btn:active,
+  a:hover,
+  a:active,
   button:hover,
   button:active {
     background: $secondary;
     color: $quinary;
   }
 
-  a.btn:active,
+  a:active,
   button:active {
     border-color: $quinary;
   }
@@ -42,7 +42,13 @@
   a[aria-expanded="true"] {
     background: lighten($quinary, 10%);
   }
+
+  .logout {
+    cursor: pointer;
+  }
 }
+
+//Toggle
 
 .navbar-default .navbar-toggle .icon-bar {
   background-color: $secondary;
