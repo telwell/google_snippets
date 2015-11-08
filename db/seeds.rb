@@ -54,6 +54,7 @@ ProjectsUser.destroy_all
 	pu = ProjectsUser.new
 	pu.user_id = temp_user.id
 	pu.project_id = project_ids.sample
+	pu.role = Faker::Name.title
 	pu.save!
 end
 
