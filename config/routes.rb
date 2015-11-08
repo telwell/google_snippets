@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:show]
   resources :projects, only: [:show, :create]
   resources :snippets, only: [:create]
+  resources :subscriptions, only: [:create, :destroy]
 
 
   get 'projects/:id/project_page' => 'projects#project_page'

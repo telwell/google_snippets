@@ -23,7 +23,7 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
       snippet.user_id = user.id;
       Restangular.all('snippets').post(snippet).then(function(response){
         console.log("Snippet created", response);
-
+        
       }, function(error){
         console.log("New snippet creation", error);
       });

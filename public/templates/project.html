@@ -3,35 +3,35 @@
     
     <header class="page-header">
       <h1>
-        Data{{data.project}}
+        {{data.project.project.name}}
       </h1>
       <div class="subscription">
-        <span class="text-success" ng-if="logged.user.id">
+        <span class="text-success" ng-if="{{data.project.subscribed}}">
           Subscribed
         </span>
-        <a href="#">
+<!--         <a href="#">
           Edit
-        </a>
+        </a> -->
       </div>
     </header>
 
 
-    <header class="page-header user clearfix">
-      <div class="avatar-container">
-        <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
-      </div>
-      <div class="user-details">
-        <h1>
-          Michael J. Fox
-        </h1>
-        <p>
-          Projects: Acquisition, Traveling
-        </p>
-      </div>
-    </header>
 
 
       <div class="project" ng-repeat="snippet in data.project.snippets">
+<!--         <header class="page-header user clearfix">
+          <div class="avatar-container">
+            <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
+          </div>
+          <div class="user-details">
+            <h1>
+              {{snippet}}
+            </h1>
+            <p>
+              Projects: Acquisition, Traveling
+            </p>
+          </div>
+        </header> -->
         <h2>
           Snippet ID {{snippet.id}}
         </h2>
@@ -73,13 +73,13 @@
             </select>
           </div>
 
-          <div class="form-group">
+<!--           <div class="form-group">
             <input type="search" class="form-control" placeholder="Search for a new member...">
           </div>
 
           <button type="submit" class="btn btn-primary">
             Add/Edit a member
-          </button>
+          </button> -->
         </form>
       </div><!-- .member-search -->
 
@@ -90,8 +90,7 @@
         <ul class="subscriber-list">
           <li ng-repeat="subscriber in data.project.subscribers">
             <a ui-sref="company.user({'user_id': subscriber.id, 'company_id': logged.user.company_id})">
-              ID {{subscriber.id}}
-              {{subscriber.name}}
+              {{subscriber.user_name}}
             </a>
           </li>
           
