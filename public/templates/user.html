@@ -6,16 +6,15 @@
 
       <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
       </div>
-      <h1>
+      <h3>
         {{username}}
-      </h1>
-      <p ng-repeat="project in data.user.projects">
-        Projects: {{project.name}}
-      </p>
+      </h3>
+      <span ng-repeat="project in data.user.projects">
+        {{project.name}}
+      </span>
 
     </header>
-    Logged ID {{logged.user.id}}
-    User page ID {{data.user.user.id}}
+
     <div class="post-snippet" ng-show="logged.user.id == data.user.user.id">
       <header>
         <p>
@@ -54,7 +53,7 @@
       <div class="project">
 
         <h2>
-          Project id for now @{{snippet.project_id}}
+          @{{snippet.project_id}}
 
         </h2>
         

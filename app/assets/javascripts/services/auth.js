@@ -56,6 +56,7 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
         }
         return user;
     }, function(error) {
+        obj.auth.user = false;
         // unauthenticated error
         console.log("No currentUser");
         $location.path('/');
