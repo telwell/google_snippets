@@ -1,45 +1,21 @@
 //Main
 
 @import 'styles/config/colors';
+@import 'styles/config/fonts';
 @import 'styles/config/utils';
 @import 'styles/components/nav';
 
-#dashboard {
-  .projects-list {
-    line-height: 30px;
-  }
-}
+//----------------------------
+// Shared Styles
+//----------------------------
 
-#auth {
-  max-width: 256px;
-  margin: 128px auto 0 auto;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 16px;
-}
-
-#home {
-  i {
-    color: $quinary;
+header.user {
+  .avatar-container {
+    max-width: 128px;
   }
 
-  .btn {
-    background: $quinary;
-  }
-
-  .cta-buttons .btn {
-    width: 25%;
-  }
-
-  #main-title {
-    font-size: 48px;
-  }
-
-  #main-header {
-    height: 384px;
-
-    h1 {
-      line-height: 64px;
-    }
+  .avatar-container,
+  .user-details {
+    float: left;
   }
 }

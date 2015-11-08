@@ -15,32 +15,59 @@
           
           <div class="user-snippets" >
 
-            <header class="page-header">
+            <header class="page-header user clearfix">
               <div class="avatar-container">
-                <img style="height:100px;" src="https://robohash.org/micheal-j-fox" alt="Avatar">
+                <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
               </div>
-              <h1>
-                {{snippet.id}}
-              </h1>
-              <p>
-                Projects: of this user
-              </p>
+              <div class="user-details">
+                <h1>
+                  {{snippet.id}}
+                </h1>
+                <p>
+                  Projects: of this user
+                </p>
+              </div>
             </header>
 
             <div class="project">
-              <h2>
+              <h2 class="text-info">
                 User projects: @{{snippet.project_id}}
               </h2>
+
               <div class="week">
                 Need a week for snippet
                 <br>
                 October 21, 2015 - October 28, 2015
               </div>
+
               <div class="snippets finished">
                 <p ng-bind-html="snippet.text | rawHtml">
-                  
+                  Finished snippets here
                 </p>
-              </div> 
+              </div><!-- .snippets .finished -->
+
+              <div class="snippets unfinished">
+                <p>
+                  Will be done next week:
+                </p>
+                <div class="snippet">
+                  <h3>
+                    Save Family
+                  </h3>
+                  <ul class="snippet-list">
+                    <li>
+                      need to plan how to save them
+                    </li>
+                    <li>
+                      get help
+                    </li>
+                    <li>
+                      rescue the doc
+                    </li>
+                  </ul>
+                </div>
+              </div><!-- .snippets .unfinished -->
+
             </div><!-- .project -->
           </div><!-- .user-snippets 1 -->
 
