@@ -16,3 +16,10 @@
 !/log/.keep
 /tmp
 /public/assets
+
+# --------
+# Mac OS X
+# --------
+*/.DS_Store
+.DS_Store
+.DS_Store?
