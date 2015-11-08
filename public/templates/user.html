@@ -12,9 +12,10 @@
           <h3 class="user-title">
             {{username}}
           </h3>
-          <h4 class="user-projects" ng-repeat="project in data.user.projects">
+          Projects:
+          <p class="user-projects" ui-sref="company.project({'project_id': project.id, 'company_id': project.company_id})" ng-repeat="project in data.user.projects">
             @{{project.name}}
-          </h4>
+          </p>
         </div>
       </header><!-- .page-header .user -->
 
@@ -67,8 +68,11 @@
         <div class="col-xs-10 col-xs-offset-1 project">
 
           <h2 class="project-title">
-            @{{snippet.project_id}}
+            <a ui-sref="company.project({'project_id': data.user.user.company_id, 'company_id': project.company_id})"></a>@{{snippet.project_id}}
           </h2>
+          <div class="week">
+            Week {{snippet.week}}
+          </div>
           
           <div class="snippets finished">
             <div class="snippet-text">

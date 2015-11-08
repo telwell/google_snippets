@@ -24,12 +24,16 @@
                   <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
                 </div>
                 <div class="user-details">
-                  <h3 class="user-title">
-                    {{snippet.user_name}} <span class="user-role" ng-show="snippet.role!='no role'">- {{snippet.role}}</span> 
-                  </h3>
+                  
+                    <a ui-sref="company.user({'user_id': snippet.snippet.user_id, 'company_id': data.dashboard.user.company_id})"><h5 class="user-title">{{snippet.user_name}}</h5></a>
+                    
                   <h4>
-                    @{{snippet.project.name}}
+                     <span class="user-role" style="color:black" ng-show="snippet.role!='no role'">{{snippet.role}}</span> 
                   </h4>
+                  <h5 style="color: black">
+
+                    <a ui-sref="company.project({'project_id': snippet.project.id, 'company_id': snippet.project.company_id})">@{{snippet.project.name}}</a>
+                  </h5>
                 </div>
               </header>  
               <div class="project">
