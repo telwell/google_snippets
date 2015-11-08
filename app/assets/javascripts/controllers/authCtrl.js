@@ -8,6 +8,7 @@ app.controller('authCtrl', ['$scope', '$location','Restangular', 'storage', func
     storage.login($scope.User.email,$scope.User.password);
   };
   $scope.Signup = function(){
+    console.log("Passed", $scope.User);
     storage.signup($scope.User);
   };
 

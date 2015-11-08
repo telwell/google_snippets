@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   
   resources :dashboard, only: [:show]
-  resources :projects, only: [:show]
+  resources :projects, only: [:show, :create]
 
 
   get 'projects/:id/project_page' => 'projects#project_page'
