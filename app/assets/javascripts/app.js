@@ -79,6 +79,7 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
         resolve: {
           'check': function( $stateParams, $location, storage){
             storage.checkAuth($stateParams.company_id);
+            storage.getProject($stateParams.project_id);
 
           }
         }
@@ -94,7 +95,8 @@ app = angular.module('app', ['ui.router', 'restangular', 'ui.bootstrap', 'Devise
         resolve: {
           'check': function( $stateParams, $location, storage){
             storage.checkAuth($stateParams.company_id);
-
+            console.log("Resolve user", $stateParams.user_id);
+            storage.getUser($stateParams.user_id);
           }
         }
       })

@@ -18,14 +18,26 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
 
   obj.getUser = function(id){
     
-    Restangular.one('user', id).get().then(function(response){
-      console.log("Data", response);
+    Restangular.one('users', id).get().then(function(response){
+      console.log("Server send this user to data", response.user.id);
       obj.data.user = response;
 
 
     },
       function(error){
         console.log("No user data returned");
+      });
+  };
+
+  obj.getProject = function(id){
+    Restangular.one('projects', id).get().then(function(response){
+      
+      obj.data.project = response;
+
+
+    },
+      function(error){
+        console.log("No project data returned");
       });
   };
 
@@ -36,7 +48,7 @@ app.service('storage', ['$http', '$location','$stateParams','Restangular', 'Auth
     Auth.currentUser().then(function(user) {
         // User was logged in, or Devise returned
         // previously authenticated session.
-        console.log("Current user is ", user);
+        console.log("Auth.user is ", user);
         obj.auth.user = user;
         obj.auth.authorized = Auth.isAuthenticated();
         if (company_id && company_id != user.company_id){

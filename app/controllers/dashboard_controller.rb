@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
 		# Add some more information to the projects
 		projects_subs = {}
 
+
 		projects.each do |project|
 			projects_subs[project.id] = { project: project, subscribed?: user.subscribed_project(project.id) }
 		end
@@ -25,6 +26,7 @@ class DashboardController < ApplicationController
 
 			snippets_full[snippet.id] = { snippet: snippet, user_name: snippet.user.name, project: snippet.project, role: user_role }
 		end
+
 
 		respond_to do |format|
 			format.json { render json: { user: user, projects: projects_subs, snippets: snippets_full } }
