@@ -30,6 +30,9 @@ gem 'devise'
 # Add Paperclip for image attachment
 gem "paperclip", "~> 4.3"
 
+# Faker to help seed our DB
+gem 'faker'
+
 #Angular
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
@@ -54,7 +57,6 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-  gem 'faker'
   # Get some email testing up
   gem "letter_opener"
 end
