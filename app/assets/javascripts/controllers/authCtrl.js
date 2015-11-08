@@ -1,13 +1,14 @@
 app.controller('authCtrl', ['$scope', '$location','Restangular', 'Auth', 'storage', function($scope, $location,Restangular, Auth, storage){
-  $scope.registration = false;
-
-  $scope.logged = storage.auth;
   
 
+  $scope.logged = storage.auth;
 
   $scope.Logout = storage.logout;
   $scope.Login = function(){
     storage.login($scope.User.email,$scope.User.password);
+  };
+  $scope.Signup = function(){
+    storage.signup($scope.User);
   };
 
   $scope.$on('devise:logout', function(event, oldCurrentUser) {

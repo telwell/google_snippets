@@ -49,14 +49,14 @@
 
     </div><!-- .snippets-feed -->
   </div><!-- .recent-snippets -->
-
-  <div class="col-md-5 project-subscriptions">
+Data {{data.dashboard}}
+  <div class="col-md-5 project-subscriptions" ng-hide="data.dashboard.projects.length==0">
     <h1>
       Projects
     </h1>
     <ul class="list-group project-list">
 
-      <li class="list-group-item clearfix" ng-repeat="project in data.dashboard.projects">
+      <li class="list-group-item clearfix"  ng-repeat="project in data.dashboard.projects">
         {{project.name}}
         <a href="#" class="btn btn-success pull-right">
           <i class="fa fa-check"></i>
