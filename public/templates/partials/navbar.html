@@ -9,7 +9,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/#/">
-        GoSnipIt <i class="fa fa-puzzle-piece"></i>
+        GoSnipIt
+        <i class="fa fa-puzzle-piece"></i>
       </a>
     </div>
 
@@ -20,21 +21,25 @@
 
         <li ng-show="logged.authorized">
           <a ui-sref="company.dashboard({'company_id': logged.user.company_id})">
+            <i class="fa fa-dashboard"></i>
             Dashboard
           </a>
         </li>
         <li ng-show="logged.authorized">
           <a ui-sref="company.user({'user_id': logged.user.id, 'company_id': logged.user.company_id})">
+            <i class="fa fa-user"></i>
             {{logged.user.first_name}}
           </a>
         </li>
         <li ng-hide="logged.authorized">
           <a ui-sref="auth">
+            <i class="fa fa-sign-in"></i>
             Sign in
           </a>
         </li>
         <li ng-show="logged.authorized">
           <a ng-click="Logout()" class="logout">
+            <i class="fa fa-power-off"></i>
             Sign out
           </a>
         </li>

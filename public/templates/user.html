@@ -1,69 +1,85 @@
-<div id="user" class="row">
-  <div class="col-md-8 center-block">
-    
-    <header class="page-header user clearfix">
-      <div class="avatar-container">
+<div id="user" class="container">
 
-      <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
-      </div>
-      <h3>
-        {{username}}
-      </h3>
-      <span ng-repeat="project in data.user.projects">
-        {{project.name}}
-      </span>
+  <div class="row">
+    <div class="col-xs-10 col-md-8 col-lg-6 center-block">
+      
+      <header class="page-header user clearfix">
+        <div class="avatar-container">
 
-    </header>
+          <img class="avatar img-responsive" src="https://robohash.org/micheal-j-fox" alt="Avatar">
+        </div>
+        <div class="user-details">
+          <h3 class="user-title">
+            {{username}}
+          </h3>
+          <h4 class="user-projects" ng-repeat="project in data.user.projects">
+            @{{project.name}}
+          </h4>
+        </div>
+      </header><!-- .page-header .user -->
 
-    <div class="post-snippet" ng-show="logged.user.id == data.user.user.id">
-      <header>
-        <p>
-          <a href="#">
-            How to write a snippet?
-          </a>
-        </p>
-      </header>
-      <br>
-      <div class="snippet-form-container">
-        <form ng-model="Snippet" ng-submit="postSnippet">
-          <div class="form-group">
-            <span class="label label-default" ng-model="Snippet.project" ng-repeat="project in data.user.projects">
+      <div class="post-snippet" ng-show="logged.user.id == data.user.user.id">
+        <header>
+          <h1>
+            Post a new snippet
+            <i class="fa fa-puzzle-piece"></i>
+          </h1>
+          <p>
+            <a style="cursor:help;" href="#" title="  The format for writing a snippet could easily be placed in the title attribute of this anchor tag to show users how to write a snippet without needing to render a new page to do so. Cool huh?
 
-              Project ID {{project.id}} Name {{project.name}}
-            </span>  
-            <textarea name="snippet" id="snippet" class="form-control" cols="30" rows="10" placeholder="What did you get done this week? What are you going to do next week?" ng-model="Snippet.text"></textarea>
+    - Something like this perhaps for a snippet?
 
-          </div>
-          <div class="week">
-            <span class="label label-default" ng-model="Snippet.week">
-
-              October 21, 2015 - October 28, 2015
-            </span>
-          </div>
+    - The CSS cursor:help; property makes the question mark appear on hover
+            ">
+              Hover me to learn how to write a snippet!
+            </a>
+          </p>
+        </header>
+        <br>
+        <div class="snippet-form-container">
+          <ul class="projects-list list-inline">
+            <li ng-model="Snippet.project" ng-repeat="project in data.user.projects">
+              <span class="label label-default">
+                Project ID {{project.id}} Name {{project.name}}
+              </span>
+            </li>
+          </ul>
           <br>
-          <button class="btn btn-primary">
-            Post Snippet
-          </button>
-        </form>
-      </div>
-    </div>
+          <form ng-model="Snippet" ng-submit="postSnippet">
+            <div class="form-group">
+              <textarea name="snippet" id="snippet" class="form-control" cols="30" rows="10" placeholder="What did you get done this week? What are you going to do next week?" ng-model="Snippet.text"></textarea>
+            </div>
+            <div class="week">
+              <span class="label label-default" ng-model="Snippet.week">
+                October 21, 2015 - October 28, 2015
+              </span>
+            </div>
+            <br>
+            <button class="btn btn-primary">
+              <i class="fa fa-send"></i>
+              Post Snippet
+            </button>
+          </form>
+        </div>
+      </div><!-- .post-snippet -->
 
+      <div class="row projects" ng-repeat="snippet in data.user.snippets">
+        <div class="col-xs-10 col-xs-offset-1 project">
 
-    <div class="projects" ng-repeat="snippet in data.user.snippets">
-      <div class="project">
+          <h2 class="project-title">
+            @{{snippet.project_id}}
+          </h2>
+          
+          <div class="snippets finished">
+            <div class="snippet-text">
+              {{snippet.text}}
+            </div>
+          </div>
 
-        <h2>
-          @{{snippet.project_id}}
+        </div>
 
-        </h2>
-        
-        <div class="snippets finished">
-        <div >{{snippet.text}}</div>
-      </div><!-- .project @acquisition -->
+      </div><!-- .projects -->
+    </div><!-- col -->  
+  </div><!-- row -->
 
-
-
-    </div><!-- .projects -->
-
-  </div>
-</div><!-- #user-show -->
+</div><!-- #user -->
